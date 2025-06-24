@@ -1,0 +1,178 @@
+name: portfolio
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  intl: ^0.20.2
+  url_launcher: ^6.3.1
+  lottie: ^3.3.1
+  flutter_bloc: ^9.1.1
+  shared_preferences: ^2.5.3
+  responsive_builder: ^0.7.1
+
+dev_dependencies:
+  analysis_options: any
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/ss/
+    - assets/fonts/
+    - assets/images/
+    - assets/lottie/
+
+  fonts:
+    - family: PlayFair
+      fonts:
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-Regular.ttf
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-Black.ttf
+          weight: 900
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-Italic.ttf
+          style: italic
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/PlayFair/PlayfairDisplay-BlackItalic.ttf
+          weight: 900
+          style: italic
+
+    - family: Boska
+      fonts:
+        - asset: assets/fonts/Boska/Boska-Regular.otf
+        - asset: assets/fonts/Boska/Boska-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Boska/Boska-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Boska/Boska-Black.otf
+          weight: 900
+        - asset: assets/fonts/Boska/Boska-Italic.otf
+          style: italic
+        - asset: assets/fonts/Boska/Boska-MediumItalic.otf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Boska/Boska-BoldItalic.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Boska/Boska-BlackItalic.otf
+          weight: 900
+          style: italic
+        - asset: assets/fonts/Boska/Boska-Light.otf
+          weight: 200
+        - asset: assets/fonts/Boska/Boska-LightItalic.otf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/Boska/Boska-Extralight.otf
+          weight: 100
+        - asset: assets/fonts/Boska/Boska-ExtralightItalic.otf
+          weight: 100
+          style: italic
+
+    - family: Rowan
+      fonts:
+        - asset: assets/fonts/Rowan/Rowan-Regular.otf
+        - asset: assets/fonts/Rowan/Rowan-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Rowan/Rowan-Light.otf
+          weight: 200
+        - asset: assets/fonts/Rowan/Rowan-Semibold.otf
+          weight: 600
+        - asset: assets/fonts/Rowan/Rowan-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Rowan/Rowan-LightItalic.otf
+          style: italic
+          weight: 200
+        - asset: assets/fonts/Rowan/Rowan-Italic.otf
+          style: italic
+        - asset: assets/fonts/Rowan/Rowan-MediumItalic.otf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Rowan/Rowan-SemiboldItalic.otf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Rowan/Rowan-BoldItalic.otf
+          weight: 700
+          style: italic
+
+    - family: OldEnglish
+      fonts:
+        - asset: assets/fonts/OldEnglish/OldEnglish.ttf
+
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter/Inter-Regular.ttf
+        - asset: assets/fonts/Inter/Inter-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Inter/Inter-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Inter/Inter-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Inter/Inter-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Inter/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter/Inter-SemiBold.ttf
+          weight: 600
+
+    - family: Melodrama
+      fonts:
+        - asset: assets/fonts/Melodrama/Melodrama-Regular.otf
+        - asset: assets/fonts/Melodrama/Melodrama-Bold.otf
+          weight: 800
+        - asset: assets/fonts/Melodrama/Melodrama-Light.otf
+          weight: 200
+        - asset: assets/fonts/Melodrama/Melodrama-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Melodrama/Melodrama-SemiBold.otf
+          weight: 600
+
+    - family: Britney
+      fonts:
+        - asset: assets/fonts/Britney/Britney-Regular.otf
+        - asset: assets/fonts/Britney/Britney-Bold.otf
+          weight: 800
+        - asset: assets/fonts/Britney/Britney-Light.otf
+          weight: 200
+        - asset: assets/fonts/Britney/Britney-Ultra.otf
+          weight: 900
+
+    - family: Quilon
+      fonts:
+        - asset: assets/fonts/Quilon/Quilon-Regular.otf
+        - asset: assets/fonts/Quilon/Quilon-Bold.otf
+          weight: 800
+        - asset: assets/fonts/Quilon/Quilon-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Quilon/Quilon-SemiBold.otf
+          weight: 600
