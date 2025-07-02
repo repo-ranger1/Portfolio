@@ -97,9 +97,6 @@ class _MyAppState extends State<MyApp> {
           builder: (context, state) {
             if (state is ConfiguredS || state is ToggleThemeS) {
               child = const Home();
-              // state.isRouteToHomeScreen
-              //     ? const Home()
-              //     : const LoginScreen();
               themeData = LocalStorage().isDarkTheme.v ?? false
                   ? AppTheme.dark
                   : AppTheme.light;

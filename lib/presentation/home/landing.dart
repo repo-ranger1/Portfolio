@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/constants/string_constants.dart';
 import 'package:portfolio/core/extensions/context_extensions.dart';
 import 'package:portfolio/core/utils/device/device_config.dart';
 
-import '../../common/widgets/hover_underline_text.dart';
-
-class Page1 extends StatelessWidget {
-  const Page1({super.key});
+class Landing extends StatelessWidget {
+  const Landing({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,24 +16,24 @@ class Page1 extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HoverUnderlineText(
-            'Gautam',
+          Text(
+            StringC.gautam,
             style: context.tt.titleLarge?.copyWith(fontSize: 200),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 80.0),
-            child: HoverUnderlineText(
-              'Manwani',
+            child: Text(
+              StringC.manwani,
               style: context.tt.titleLarge?.copyWith(fontSize: 200),
             ),
           ),
           const SizedBox(height: 40),
           Text(
-            'Flutter & Mobile Developer\nbuilding high-performance apps.',
+            StringC.landingSubtitle,
             style: context.tt.titleSmall?.copyWith(
               fontSize: 50,
               color: Colors.black,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.normal,
             ),
           ),
         ],

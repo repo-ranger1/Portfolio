@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/common/widgets/hover_underline_text.dart';
-import 'package:portfolio/core/extensions/context_extensions.dart';
+import 'package:portfolio/core/constants/string_constants.dart';
 import 'package:portfolio/core/extensions/widget_extensions.dart';
-import 'package:portfolio/presentation/home/page1.dart';
-import 'package:portfolio/presentation/home/widgets/about_me.dart';
-import 'package:portfolio/presentation/home/widgets/projects.dart';
+import 'package:portfolio/presentation/home/landing.dart';
+import 'package:portfolio/presentation/home/widgets/header.dart';
+
+import '../contact/contact.dart';
+import '../work/work.dart';
 
 class Modules {
   final Widget page;
@@ -42,23 +43,23 @@ class _HomeState extends State<Home> {
 
     _modules = [
       Modules(
-        title: 'Me',
         key: meKey,
-        page: Page1(key: meKey),
+        title: StringC.me,
+        page: Landing(key: meKey),
       ),
       Modules(
-        title: 'Work',
         key: workKey,
-        page: Projects(key: workKey),
+        title: StringC.work,
+        page: Work(key: workKey),
       ),
+      // Modules(
+      //   key: profileKey,
+      //   title: StringC.profile,
+      //   page: SizedBox.shrink(key: profileKey),
+      // ),
       Modules(
-        title: 'Profile',
-        key: profileKey,
-        page: SizedBox.shrink(key: profileKey),
-      ),
-      Modules(
-        title: 'Contact',
         key: contactKey,
+        title: StringC.contact,
         page: Contact(key: contactKey),
       ),
     ];
@@ -88,61 +89,6 @@ class _HomeState extends State<Home> {
           Header(modules: _modules),
         ],
       ),
-    );
-  }
-}
-
-class Header extends StatelessWidget {
-  const Header({
-    super.key,
-    required this.modules,
-  });
-
-  final List<Modules> modules;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 48),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CircleAvatar(
-            child: Text(
-              'GM',
-              style: context.tt.titleSmall?.copyWith(
-                fontSize: 16,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Row(
-            spacing: 60,
-            children: List.generate(
-              modules.length,
-              (i) => GestureDetector(
-                onTap: () => _onModuleChange(i),
-                child: HoverUnderlineText(
-                  modules[i].title,
-                  style: context.tt.titleLarge,
-                ),
-              ),
-            ).toList(),
-          )
-        ],
-      ),
-    );
-  }
-
-  void _onModuleChange(int newModule) {
-    final BuildContext? keyContext = modules[newModule].key.currentContext;
-
-    if (keyContext == null) return;
-
-    Scrollable.ensureVisible(
-      keyContext,
-      curve: Curves.easeInOut,
-      duration: const Duration(milliseconds: 500),
     );
   }
 }
