@@ -57,6 +57,29 @@ class AppColor {
     onSecondary: darkOnSecondary,
     onSurfaceVariant: darkOnSurfaceVariant,
   );
+
+  static const List<double> colorInverter = <double>[
+    -1,
+    0,
+    0,
+    0,
+    255,
+    0,
+    -1,
+    0,
+    0,
+    255,
+    0,
+    0,
+    -1,
+    0,
+    255,
+    0,
+    0,
+    0,
+    1,
+    0,
+  ];
 }
 
 // Enum for Single Colors with Names

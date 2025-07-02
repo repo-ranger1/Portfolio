@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/utils/app/app_color.dart';
+
 class CursorFollower extends StatefulWidget {
   const CursorFollower({super.key, required this.child});
 
@@ -39,28 +41,7 @@ class _CursorFollowerState extends State<CursorFollower> {
                   duration: const Duration(milliseconds: 100),
                   child: const ClipOval(
                     child: BackdropFilter(
-                      filter: ColorFilter.matrix(<double>[
-                        -1,
-                        0,
-                        0,
-                        0,
-                        255,
-                        0,
-                        -1,
-                        0,
-                        0,
-                        255,
-                        0,
-                        0,
-                        -1,
-                        0,
-                        255,
-                        0,
-                        0,
-                        0,
-                        1,
-                        0,
-                      ]),
+                      filter: ColorFilter.matrix(AppColor.colorInverter),
                       child: SizedBox.shrink(),
                     ),
                   ),
