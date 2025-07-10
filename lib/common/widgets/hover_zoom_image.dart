@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
+/// Widget that displays an image which zooms in slightly when hovered by the mouse.
+///
+/// Useful for interactive galleries or cards to provide visual feedback.
 class HoverZoomImage extends StatelessWidget {
-  final double width;
-  final double height;
+  /// Path to the image asset.
   final String assetPath;
+  /// Width of the image.
+  final double width;
+  /// Height of the image.
+  final double height;
 
   const HoverZoomImage(
     this.assetPath, {

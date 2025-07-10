@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../core/utils/app/app_color.dart';
 
+/// Widget that displays a circular cursor following the mouse pointer over its child.
+///
+/// Useful for custom cursor effects or interactive UI feedback.
 class CursorFollower extends StatefulWidget {
+  /// The widget subtree over which the custom cursor will follow the mouse.
   const CursorFollower({super.key, required this.child});
 
   final Widget child;
@@ -17,6 +21,7 @@ class _CursorFollowerState extends State<CursorFollower> {
 
   @override
   Widget build(BuildContext context) {
+    // MouseRegion tracks mouse movement and triggers cursor updates.
     return MouseRegion(
       onHover: (event) async {
         await Future.delayed(const Duration(milliseconds: 100));
@@ -24,17 +29,16 @@ class _CursorFollowerState extends State<CursorFollower> {
       },
       child: Stack(
         children: [
-          // Your actual content here
-          widget.child,
+          widget.child, // Main content.
 
-          // The round cursor follower
+          // The round cursor follower overlay.
           StatefulBuilder(builder: (context, sst) {
             _cursorReBuilder ??= sst;
             return Positioned(
               left: _mousePosition.dx - 10,
               top: _mousePosition.dy - 10,
               child: IgnorePointer(
-                // So it doesn't block mouse input
+                // Prevents the overlay from blocking mouse input.
                 child: AnimatedContainer(
                   width: 20,
                   height: 20,
