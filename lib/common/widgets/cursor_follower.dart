@@ -35,13 +35,13 @@ class _CursorFollowerState extends State<CursorFollower> {
           StatefulBuilder(builder: (context, sst) {
             _cursorReBuilder ??= sst;
             return Positioned(
-              left: _mousePosition.dx - 10,
-              top: _mousePosition.dy - 10,
+              left: _mousePosition.dx - 20,
+              top: _mousePosition.dy - 20,
               child: IgnorePointer(
                 // Prevents the overlay from blocking mouse input.
                 child: AnimatedContainer(
-                  width: 20,
-                  height: 20,
+                  width: 40,
+                  height: 40,
                   duration: const Duration(milliseconds: 100),
                   child: const ClipOval(
                     child: BackdropFilter(
