@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/common/widgets/hover_underline_text.dart';
 import 'package:portfolio/core/constants/asset_constants.dart';
-import 'package:portfolio/core/extensions/context_extensions.dart';
-import 'package:portfolio/core/extensions/widget_extensions.dart';
-import 'package:portfolio/core/utils/app/app_fonts.dart';
 import 'package:portfolio/presentation/work/widgets/project_page.dart';
 
-import '../../../common/widgets/hover_zoom_image.dart';
-import '../../../core/utils/device/device_config.dart';
 import '../../core/constants/string_constants.dart';
 
 enum ProjectsEnum {

@@ -4,21 +4,20 @@ import 'package:portfolio/core/extensions/widget_extensions.dart';
 import 'package:portfolio/presentation/home/landing.dart';
 import 'package:portfolio/presentation/home/widgets/header.dart';
 
+import '../../domain/entities/module_entity.dart';
 import '../contact/contact.dart';
+import '../profile/profile.dart';
 import '../work/work.dart';
 
-class Modules {
-  final Widget page;
-  final String title;
-  final GlobalKey key;
+// GlobalKeys for identifying individual modules.
+final GlobalKey meKey = GlobalKey();
+final GlobalKey workKey = GlobalKey();
+final GlobalKey profileKey = GlobalKey();
+final GlobalKey contactKey = GlobalKey();
 
-  const Modules({
-    required this.key,
-    required this.page,
-    required this.title,
-  });
-}
-
+/// [Home] — The main persistent page of the website.
+/// Displays all modules in a single scrollable list,
+/// with a fixed header at the top.
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -27,37 +26,29 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late final ScrollController _scrollC;
-
-  late final List<Modules> _modules;
+  /// Collection of all available modules displayed on the website.
+  late final List<ModuleEntity> _modules;
 
   @override
   void initState() {
-    _scrollC = ScrollController();
-
-    // GlobalKeys for each section
-    final GlobalKey meKey = GlobalKey();
-    final GlobalKey workKey = GlobalKey();
-    final GlobalKey profileKey = GlobalKey();
-    final GlobalKey contactKey = GlobalKey();
-
+    // Populating the module.
     _modules = [
-      Modules(
+      ModuleEntity(
         key: meKey,
         title: StringC.me,
         page: Landing(key: meKey),
       ),
-      Modules(
+      ModuleEntity(
         key: workKey,
         title: StringC.work,
         page: Work(key: workKey),
       ),
-      // Modules(
-      //   key: profileKey,
-      //   title: StringC.profile,
-      //   page: SizedBox.shrink(key: profileKey),
-      // ),
-      Modules(
+      ModuleEntity(
+        key: profileKey,
+        title: StringC.profile,
+        page: Profile(key: profileKey),
+      ),
+      ModuleEntity(
         key: contactKey,
         title: StringC.contact,
         page: Contact(key: contactKey),
@@ -67,18 +58,11 @@ class _HomeState extends State<Home> {
   }
 
   @override
-  void dispose() {
-    _scrollC.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           SingleChildScrollView(
-            controller: _scrollC,
             child: Column(
               children: List.generate(
                 _modules.length,

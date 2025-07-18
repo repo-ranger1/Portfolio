@@ -3,7 +3,7 @@ import 'package:portfolio/core/extensions/context_extensions.dart';
 
 import '../../../common/widgets/hover_underline_text.dart';
 import '../../../core/utils/app/app_fonts.dart';
-import '../home.dart';
+import '../../../domain/entities/module_entity.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -11,7 +11,7 @@ class Header extends StatelessWidget {
     required this.modules,
   });
 
-  final List<Modules> modules;
+  final List<ModuleEntity> modules;
 
   @override
   Widget build(BuildContext context) {

@@ -8,9 +8,9 @@ import '../home/widgets/footer.dart';
 
 enum MediaLinkE {
   medium(title: StringC.medium, url: StringC.mediumUrl),
+  stackOverflow(title: StringC.stackOverflow, url: StringC.stackOverflowUrl),
   email(title: StringC.email, url: StringC.emailUrl),
-  linkedIn(title: StringC.linkedIn, url: StringC.linkedInUrl),
-  stackOverflow(title: StringC.stackOverflow, url: StringC.stackOverflowUrl);
+  linkedIn(title: StringC.linkedIn, url: StringC.linkedInUrl);
   // phone(title: 'Phone', url: '+91 9924190188');
 
   final String title;
