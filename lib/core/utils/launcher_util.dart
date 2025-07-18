@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 ///Meditab Software Inc. CONFIDENTIAL
@@ -60,7 +59,6 @@ class LauncherUtils {
 
   static Future<void> launchMap({
     required final String address,
-    required final BuildContext context,
   }) async {
     late final Uri uri;
     if (Platform.isAndroid) {

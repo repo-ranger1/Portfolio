@@ -14,5 +14,5 @@ class AppFonts {
   static const String britney = 'Britney'; //
 
   static const String primary = playFair;
-  static const String secondary = boska;
+  static const String secondary = adventureOfTheOldGiant;
 }

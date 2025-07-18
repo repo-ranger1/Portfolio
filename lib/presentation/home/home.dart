@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/common/widgets/hover_underline_text.dart';
-import 'package:portfolio/core/extensions/context_extensions.dart';
+import 'package:portfolio/core/constants/string_constants.dart';
 import 'package:portfolio/core/extensions/widget_extensions.dart';
-import 'package:portfolio/presentation/home/page1.dart';
-import 'package:portfolio/presentation/home/widgets/about_me.dart';
-import 'package:portfolio/presentation/home/widgets/projects.dart';
+import 'package:portfolio/presentation/home/landing.dart';
+import 'package:portfolio/presentation/home/widgets/header.dart';
 
-class Modules {
-  final Widget page;
-  final String title;
-  final GlobalKey key;
+import '../../domain/entities/module_entity.dart';
+import '../contact/contact.dart';
+import '../profile/profile.dart';
+import '../work/work.dart';
 
-  const Modules({
-    required this.key,
-    required this.page,
-    required this.title,
-  });
-}
+// GlobalKeys for identifying individual modules.
+final GlobalKey meKey = GlobalKey();
+final GlobalKey workKey = GlobalKey();
+final GlobalKey profileKey = GlobalKey();
+final GlobalKey contactKey = GlobalKey();
 
+/// [Home] — The main persistent page of the website.
+/// Displays all modules in a single scrollable list,
+/// with a fixed header at the top.
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -26,49 +26,35 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late final ScrollController _scrollC;
-
-  late final List<Modules> _modules;
+  /// Collection of all available modules displayed on the website.
+  late final List<ModuleEntity> _modules;
 
   @override
   void initState() {
-    _scrollC = ScrollController();
-
-    // GlobalKeys for each section
-    final GlobalKey meKey = GlobalKey();
-    final GlobalKey workKey = GlobalKey();
-    final GlobalKey profileKey = GlobalKey();
-    final GlobalKey contactKey = GlobalKey();
-
+    // Populating the module.
     _modules = [
-      Modules(
-        title: 'Me',
+      ModuleEntity(
         key: meKey,
-        page: Page1(key: meKey),
+        title: StringC.me,
+        page: Landing(key: meKey),
       ),
-      Modules(
-        title: 'Work',
+      ModuleEntity(
         key: workKey,
-        page: Projects(key: workKey),
+        title: StringC.work,
+        page: Work(key: workKey),
       ),
-      Modules(
-        title: 'Profile',
+      ModuleEntity(
         key: profileKey,
-        page: SizedBox.shrink(key: profileKey),
+        title: StringC.profile,
+        page: Profile(key: profileKey),
       ),
-      Modules(
-        title: 'Contact',
+      ModuleEntity(
         key: contactKey,
+        title: StringC.contact,
         page: Contact(key: contactKey),
       ),
     ];
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    _scrollC.dispose();
-    super.dispose();
   }
 
   @override
@@ -77,7 +63,6 @@ class _HomeState extends State<Home> {
       body: Stack(
         children: [
           SingleChildScrollView(
-            controller: _scrollC,
             child: Column(
               children: List.generate(
                 _modules.length,
@@ -88,61 +73,6 @@ class _HomeState extends State<Home> {
           Header(modules: _modules),
         ],
       ),
-    );
-  }
-}
-
-class Header extends StatelessWidget {
-  const Header({
-    super.key,
-    required this.modules,
-  });
-
-  final List<Modules> modules;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 48),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CircleAvatar(
-            child: Text(
-              'GM',
-              style: context.tt.titleSmall?.copyWith(
-                fontSize: 16,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Row(
-            spacing: 60,
-            children: List.generate(
-              modules.length,
-              (i) => GestureDetector(
-                onTap: () => _onModuleChange(i),
-                child: HoverUnderlineText(
-                  modules[i].title,
-                  style: context.tt.titleLarge,
-                ),
-              ),
-            ).toList(),
-          )
-        ],
-      ),
-    );
-  }
-
-  void _onModuleChange(int newModule) {
-    final BuildContext? keyContext = modules[newModule].key.currentContext;
-
-    if (keyContext == null) return;
-
-    Scrollable.ensureVisible(
-      keyContext,
-      curve: Curves.easeInOut,
-      duration: const Duration(milliseconds: 500),
     );
   }
 }

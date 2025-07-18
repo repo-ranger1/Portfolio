@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
+/// Widget that creates a horizontally scrolling marquee effect for a single line of text.
+///
+/// Useful for news tickers, headlines, or any continuously scrolling text.
 class MarqueeText extends StatefulWidget {
-  final double gap;
+  /// The string to display in the marquee.
   final String text;
+  /// Optional text style.
   final TextStyle? style;
+  /// Space between repeated text instances.
+  final double gap;
+  /// Time taken for one full scroll cycle.
   final Duration duration;
 
   const MarqueeText({
@@ -31,13 +38,14 @@ class _MarqueeTextState extends State<MarqueeText>
     _controller = AnimationController(vsync: this, duration: widget.duration)
       ..addListener(
         () => _scrollController.jumpTo(_controller.value * _scrollWidth),
-      );
+      ); // Sync scroll position with animation controller.
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => _startScroll());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _startScroll()); // Start scrolling after layout.
   }
 
   double _scrollWidth = 0.0;
 
+  /// Calculates the scroll width and starts the marquee animation.
   void _startScroll() {
     final textWidth = _textKey.currentContext?.size?.width ?? 0;
 

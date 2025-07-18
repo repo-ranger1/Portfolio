@@ -3,10 +3,10 @@ class AssetC {
 
   // region Images
   static const String imagePath = "assets/images";
-  static const String mockup = "$imagePath/mockup.jpg";
   static const String dosePackDelivery = "$imagePath/doses_delivery.jpg";
   static const String myDoses = "$imagePath/my_doses.jpg";
   static const String masterpieceStudio = "$imagePath/masterpiece_studio.jpg";
+  static const String projectGroup = "$imagePath/project_group.png";
 
   // endregion
 

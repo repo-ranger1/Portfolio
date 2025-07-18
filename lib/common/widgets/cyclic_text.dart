@@ -25,10 +25,20 @@ import 'package:portfolio/core/extensions/context_extensions.dart';
 ///@version 1.0.0
 ///@since 13/05/25 15:26
 
+/// Widget that cycles through a list of messages, fading each in and out in sequence.
+///
+/// Useful for dynamic headlines or rotating taglines.
 class CyclingTextWidget extends StatefulWidget {
-  final Duration pauseTime;
-  final TextStyle? textStyle;
+  /// List of messages to display in rotation.
   final List<String> messages;
+
+  /// Optional style for the displayed text.
+  final TextStyle? textStyle;
+
+  /// Duration each message is visible before cycling.
+  final Duration pauseTime;
+
+  /// Duration of the fade animation between messages.
   final Duration animationTime;
 
   const CyclingTextWidget({
@@ -61,15 +71,15 @@ class _CyclingTextWidgetState extends State<CyclingTextWidget>
     _startCycling();
   }
 
+  /// Starts the timer and handles the cycling of messages with fade animations.
   void _startCycling() {
     _timer = Timer.periodic(widget.pauseTime, (timer) {
       _controller.forward().then((_) {
-        setState(() {
-          _isVisible = false;
-        });
+        setState(() => _isVisible = false);
 
         Future.delayed(widget.animationTime, () {
           setState(() {
+            // Move to the next message in the list, looping back to start.
             _currentIndex = (_currentIndex + 1) % widget.messages.length;
             _isVisible = true;
           });
