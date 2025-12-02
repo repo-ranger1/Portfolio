@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/core/constants/asset_constants.dart';
 import 'package:portfolio/core/constants/string_constants.dart';
+import 'package:portfolio/core/extensions/string_exntesion.dart';
 import 'package:portfolio/core/utils/app/app_color_royal.dart';
 import 'package:portfolio/core/utils/launcher_util.dart';
 import 'package:portfolio/core/utils/responsive/responsive_utils.dart';
@@ -32,35 +33,36 @@ enum ProjectType {
     title: StringC.masterpieceStudio,
     description: StringC.masterpieceStudioSubtitle,
     image: AssetC.masterpieceStudio,
-    playStoreUrl: StringC.masterpieceStudioPlayStoreUrl,
-    appStoreUrl: StringC.masterpieceStudioAppStoreUrl,
+    // playStoreUrl: StringC.masterpieceStudioPlayStoreUrl,
+    // appStoreUrl: StringC.masterpieceStudioAppStoreUrl,
   ),
-  cataractAI(
-    number: '04',
-    category: StringC.cataractAICategory,
-    title: StringC.cataractAI,
-    description: StringC.cataractAISubtitle,
-    image: AssetC.cataractAI,
-    playStoreUrl: StringC.cataractAIPlayStoreUrl,
-    appStoreUrl: StringC.cataractAIAppStoreUrl,
-  ),
-  showItMax(
-    number: '05',
-    category: StringC.showItMaxCategory,
-    title: StringC.showItMax,
-    description: StringC.showItMaxSubtitle,
-    image: AssetC.showItMax,
-    playStoreUrl: StringC.showItMaxPlayStoreUrl,
-    appStoreUrl: StringC.showItMaxAppStoreUrl,
-  );
+  // cataractAI(
+  //   number: '04',
+  //   category: StringC.cataractAICategory,
+  //   title: StringC.cataractAI,
+  //   description: StringC.cataractAISubtitle,
+  //   image: AssetC.cataractAI,
+  //   playStoreUrl: StringC.cataractAIPlayStoreUrl,
+  //   appStoreUrl: StringC.cataractAIAppStoreUrl,
+  // ),
+  // showItMax(
+  //   number: '05',
+  //   category: StringC.showItMaxCategory,
+  //   title: StringC.showItMax,
+  //   description: StringC.showItMaxSubtitle,
+  //   image: AssetC.showItMax,
+  //   playStoreUrl: StringC.showItMaxPlayStoreUrl,
+  //   appStoreUrl: StringC.showItMaxAppStoreUrl,
+  // )
+  ;
 
   final String number;
   final String category;
   final String title;
   final String description;
   final String image;
-  final String playStoreUrl;
-  final String appStoreUrl;
+  final String? playStoreUrl;
+  final String? appStoreUrl;
 
   const ProjectType({
     required this.number,
@@ -68,8 +70,8 @@ enum ProjectType {
     required this.title,
     required this.description,
     required this.image,
-    required this.playStoreUrl,
-    required this.appStoreUrl,
+    this.playStoreUrl,
+    this.appStoreUrl,
   });
 }
 
@@ -367,22 +369,24 @@ class _ProjectCardState extends State<_ProjectCard> {
       spacing: context.spacing(16),
       runSpacing: context.spacing(16),
       children: [
-        _StoreButton(
-          icon: AssetC.playStore,
-          label: StringC.playStoreLabel,
-          onTap: () =>
-              LauncherUtils.launchLink(link: widget.project.playStoreUrl),
-          isHovered: _isHovered,
-          isMobile: isMobile,
-        ),
-        _StoreButton(
-          icon: AssetC.appStore,
-          label: StringC.appStoreLabel,
-          onTap: () =>
-              LauncherUtils.launchLink(link: widget.project.appStoreUrl),
-          isHovered: _isHovered,
-          isMobile: isMobile,
-        ),
+        if (widget.project.playStoreUrl.isNotNullOrEmpty)
+          _StoreButton(
+            icon: AssetC.playStore,
+            label: StringC.playStoreLabel,
+            onTap: () => LauncherUtils.launchLink(
+                link: widget.project.playStoreUrl ?? ''),
+            isHovered: _isHovered,
+            isMobile: isMobile,
+          ),
+        if (widget.project.appStoreUrl.isNotNullOrEmpty)
+          _StoreButton(
+            icon: AssetC.appStore,
+            label: StringC.appStoreLabel,
+            onTap: () => LauncherUtils.launchLink(
+                link: widget.project.appStoreUrl ?? ''),
+            isHovered: _isHovered,
+            isMobile: isMobile,
+          ),
       ],
     );
   }
