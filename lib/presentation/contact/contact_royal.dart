@@ -128,9 +128,9 @@ class ContactRoyal extends StatelessWidget {
   Widget _buildContactLinks(BuildContext context) {
     final links = [
       (MediaLinkE.linkedIn, AssetC.linkedin),
+      (MediaLinkE.resume, AssetC.resume),
       (MediaLinkE.stackOverflow, AssetC.stackOverflow),
       (MediaLinkE.medium, AssetC.medium),
-      (MediaLinkE.resume, AssetC.resume),
     ];
 
     return Wrap(
