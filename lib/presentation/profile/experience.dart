@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/extensions/context_extensions.dart';
+import 'package:portfolio/core/utils/responsive/responsive_utils.dart';
 import 'package:portfolio/presentation/profile/profile.dart';
 
-import '../../core/constants/size_constants.dart';
 import '../../core/constants/string_constants.dart';
 
 class Experiences extends StatelessWidget {
@@ -11,7 +11,7 @@ class Experiences extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 24,
+      spacing: context.spacing(24),
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,7 +21,7 @@ class Experiences extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizeC.h8,
+        SizedBox(height: context.spacing(8)),
         ...List.generate(
           Experience.values.length,
           (i) => ListTile(
@@ -34,7 +34,9 @@ class Experiences extends StatelessWidget {
             leading: Text(
               Experience.values[i].company,
               // '${Experience.values[i].company} / ${Experience.values[i].designation}',
-              style: context.tt.titleLarge?.copyWith(fontSize: 24),
+              style: context.tt.titleLarge?.copyWith(
+                fontSize: context.sp(24),
+              ),
             ),
           ),
         ),

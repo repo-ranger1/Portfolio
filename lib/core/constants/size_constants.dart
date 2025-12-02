@@ -1,5 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
+/// DEPRECATED: Use ResponsiveUtils instead for dynamic sizing
+/// This class contains legacy static sizes. For responsive design,
+/// use context.spacing() from ResponsiveContext extension.
+///
+/// Example: Instead of SizeC.h24, use SizedBox(height: context.spacing(24))
+@Deprecated('Use ResponsiveUtils for dynamic sizing')
 class SizeC {
   const SizeC._();
 

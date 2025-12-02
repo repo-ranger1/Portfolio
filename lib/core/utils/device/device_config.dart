@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-/// [Device] will do two operations..
+/// [Device] will detect device type and set orientation accordingly.
 ///
-/// 1. checks the device type and set the orientation accordingly
-///    [Landscape] if the device is [Tablet] (android tabs, apple ipads)
-///    [Portrait] if the device is [Mobile] (android mobiles, apple iPhones).
+/// Supports three device types:
+/// - [Mobile]: width < 600 (Portrait orientation)
+/// - [Tablet]: width >= 600 and < 1024 (Flexible orientation)
+/// - [Desktop]: width >= 1024 (Landscape orientation)
 ///
-/// 2. find the device width and height
-///    and will store in in the [AppConsts] for further usage.
+/// Also stores device width and height for easy access throughout the app.
+
+enum DeviceType { mobile, tablet, desktop }
 
 final class Device {
   static final Device _singleton = Device._internal();
@@ -17,7 +19,15 @@ final class Device {
 
   Device._internal();
 
-  bool isMobile = false;
+  // Breakpoints matching ResponsiveUtils
+  static const double mobileBreakpoint = 600;
+  static const double tabletBreakpoint = 1024;
+
+  DeviceType deviceType = DeviceType.desktop;
+
+  bool get isMobile => deviceType == DeviceType.mobile;
+  bool get isTablet => deviceType == DeviceType.tablet;
+  bool get isDesktop => deviceType == DeviceType.desktop;
 
   double height = 0;
   double width = 0;
@@ -29,32 +39,50 @@ final class Device {
     width = mediaQueryData.size.width;
     height = mediaQueryData.size.height;
 
-    final double deviceWidth =
-        orientation == Orientation.landscape
-            ? mediaQueryData.size.height
-            : mediaQueryData.size.width;
+    final double deviceWidth = orientation == Orientation.landscape
+        ? mediaQueryData.size.height
+        : mediaQueryData.size.width;
 
-    // If the device's width is greater than 600.
-    if (deviceWidth > 600) {
-      // device is desktop.
-      isMobile = false;
+    // Determine device type based on width
+    if (deviceWidth < mobileBreakpoint) {
+      // Mobile device
+      deviceType = DeviceType.mobile;
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
+    } else if (deviceWidth < tabletBreakpoint) {
+      // Tablet device
+      deviceType = DeviceType.tablet;
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+    } else {
+      // Desktop device
+      deviceType = DeviceType.desktop;
       SystemChrome.setPreferredOrientations([
         DeviceOrientation.landscapeLeft,
         DeviceOrientation.landscapeRight,
       ]);
     }
-    // Device's width is less than 600.
-    else {
-      // device is mobile.
-      isMobile = true;
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
-      ]);
-    }
   }
 
-  /// Return value according to the device.
-  T accordingValue<T>({required T mobile, required T desktop}) =>
-      isMobile ? mobile : desktop;
+  /// Return value according to the device type.
+  T accordingValue<T>({
+    required T mobile,
+    T? tablet,
+    required T desktop,
+  }) {
+    switch (deviceType) {
+      case DeviceType.mobile:
+        return mobile;
+      case DeviceType.tablet:
+        return tablet ?? desktop;
+      case DeviceType.desktop:
+        return desktop;
+    }
+  }
 }

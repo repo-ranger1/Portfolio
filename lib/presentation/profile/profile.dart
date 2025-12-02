@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/core/constants/asset_constants.dart';
 import 'package:portfolio/core/constants/string_constants.dart';
 import 'package:portfolio/core/extensions/context_extensions.dart';
-import 'package:portfolio/presentation/home/home.dart';
+import 'package:portfolio/core/utils/responsive/responsive_utils.dart';
 
-import '../../common/widgets/circular_text_animator.dart';
-import '../../core/utils/device/device_config.dart';
+import '../home/landing.dart';
 import 'experience.dart';
 
 enum Experience {
@@ -44,7 +43,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: Device().height * 0.1,
+        vertical: context.hp(10),
       ),
       child: Column(
         children: [
@@ -53,34 +52,36 @@ class Profile extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: Device().width * 0.1,
+                  horizontal: context.wp(10),
                 ),
-                child: Image.asset(AssetC.projectGroup),
-              ),
-              Positioned(
-                right: 12,
-                child: CircularTextAnimator(
-                  radius: 80,
-                  textStyle: context.tt.titleLarge,
-                  text: StringC.availableForInquire,
-                  animationDuration: const Duration(seconds: 25),
-                  centerWidget: IconButton(
-                    onPressed: _scrollToContact,
-                    icon: const Icon(CupertinoIcons.down_arrow),
-                  ),
+                child: AdvancedTiltContainer(
+                  child: Image.asset(AssetC.projectGroup),
                 ),
               ),
+              // Positioned(
+              //   right: 12,
+              //   child: CircularTextAnimator(
+              //     radius: 80,
+              //     textStyle: context.tt.titleLarge,
+              //     text: StringC.availableForInquire,
+              //     animationDuration: const Duration(seconds: 25),
+              //     centerWidget: IconButton(
+              //       onPressed: _scrollToContact,
+              //       icon: const Icon(CupertinoIcons.down_arrow),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
-          SizedBox(height: Device().height * 0.1),
+          SizedBox(height: context.hp(10)),
           Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: Device().width * 0.1,
+              horizontal: context.wp(10),
             ),
             child: Column(
               children: [
                 Column(
-                  spacing: 12,
+                  spacing: context.spacing(12),
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: List.generate(
                     StringC.aboutMe.length,
@@ -92,7 +93,7 @@ class Profile extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: Device().height * 0.1),
+                SizedBox(height: context.hp(10)),
                 const Experiences(),
               ],
             ),
@@ -102,14 +103,14 @@ class Profile extends StatelessWidget {
     );
   }
 
-  void _scrollToContact() {
-    final BuildContext? keyContext = contactKey.currentContext;
-
-    if (keyContext == null) return;
-    Scrollable.ensureVisible(
-      keyContext,
-      curve: Curves.easeInOut,
-      duration: const Duration(milliseconds: 500),
-    );
-  }
+  // void _scrollToContact() {
+  //   final BuildContext? keyContext = contactKey.currentContext;
+  //
+  //   if (keyContext == null) return;
+  //   Scrollable.ensureVisible(
+  //     keyContext,
+  //     curve: Curves.easeInOut,
+  //     duration: const Duration(milliseconds: 500),
+  //   );
+  // }
 }

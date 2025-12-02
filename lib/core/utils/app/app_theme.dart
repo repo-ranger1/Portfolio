@@ -145,7 +145,7 @@ abstract class AppTheme {
     ),
 
     // The Card theme.
-    cardTheme: const CardTheme(
+    cardTheme: const CardThemeData(
       elevation: 0,
       color: AppColor.lightOnPrimary,
       margin: EdgeInsets.all(0),
@@ -340,7 +340,7 @@ abstract class AppTheme {
     ),
 
     // The Card theme.
-    cardTheme: const CardTheme(
+    cardTheme: const CardThemeData(
       elevation: 0,
       color: AppColor.darkOnPrimary,
       margin: EdgeInsets.all(0),
