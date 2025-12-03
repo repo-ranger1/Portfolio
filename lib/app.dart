@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/core/utils/device/device_config.dart';
+import 'package:portfolio/core/utils/responsive/responsive_utils.dart';
 import 'package:portfolio/presentation/config/config.dart';
 import 'package:portfolio/presentation/config/config_cubit.dart';
 import 'package:portfolio/presentation/home/home.dart';
@@ -105,7 +106,14 @@ class _MyAppState extends State<MyApp> {
               theme: themeData,
               navigatorKey: globalNavKey,
               debugShowCheckedModeBanner: false,
-              home: CursorFollower(child: child),
+              home: Builder(
+                builder: (context) {
+                  if (ResponsiveUtils.isMobile(context))
+                    return child;
+                  else
+                    return CursorFollower(child: child);
+                },
+              ),
               onGenerateRoute: AppRouteGenerator.generate,
             );
           },
