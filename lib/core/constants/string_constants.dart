@@ -60,7 +60,7 @@ class StringC {
   static const String masterpieceStudio = 'MasterPiece Studio';
   static const String masterpieceStudioCategory = 'Creative · Mobile';
   static const String masterpieceStudioSubtitle =
-      "A visual journey through world-class art that makes browsing feel like an event. Custom animations, gesture-driven navigation, and immersive viewing modes that treat every artwork with the reverence it deserves. Because fine art shouldn't be confined to galleries.";
+      "A visual journey through world-class art that makes browsing feel like an event. Custom animations, gesture-driven navigation, and immersive viewing modes that treat every artwork with the reverence it deserves.";
   static const String masterpieceStudioPlayStoreUrl =
       'https://play.google.com/store/apps/details?id=com.masterpiece.studio';
   static const String masterpieceStudioAppStoreUrl =
@@ -78,7 +78,7 @@ class StringC {
   static const String myDoses = 'MyDoses';
   static const String myDosesCategory = 'Healthcare · Mobile';
   static const String myDosesSubtitle =
-      "A medication management ecosystem that transforms how patients interact with their health. Intelligent reminders, prescription tracking, and seamless healthcare provider integration—because forgetting a dose shouldn't be an option.";
+      "A medication management ecosystem that transforms how patients interact with their health. Intelligent reminders, prescription tracking, and seamless healthcare provider integration, because forgetting a dose shouldn't be an option.";
   static const String myDosesPlayStoreUrl =
       'https://play.google.com/store/apps/details?id=com.dosepack.mydoses';
   static const String myDosesAppStoreUrl =
@@ -87,7 +87,7 @@ class StringC {
   static const String cataractAI = 'Cataract AI';
   static const String cataractAICategory = 'Healthcare · AI';
   static const String cataractAISubtitle =
-      "AI-powered precision meets medical expertise. Real-time cataract detection that doesn't just analyze—it empowers ophthalmologists to catch what matters before it's too late. In-house ML models, HIPAA-compliant infrastructure, and a doctor-verification workflow that respects both technology and human judgment.";
+      "AI-powered precision meets medical expertise. Real-time cataract detection that doesn't just analyze, it empowers ophthalmologists to catch what matters before it's too late. In-house ML models, HIPAA-compliant infrastructure, and a doctor-verification workflow that respects both technology and human judgment.";
   static const String cataractAIPlayStoreUrl =
       'https://play.google.com/store/apps/details?id=com.cataract.ai';
   static const String cataractAIAppStoreUrl =
@@ -96,11 +96,29 @@ class StringC {
   static const String showItMax = 'ShowItMax';
   static const String showItMaxCategory = 'Enterprise · Media';
   static const String showItMaxSubtitle =
-      "Presentations that don't just display—they captivate. A media powerhouse built for professionals who refuse to let connectivity dictate their impact. Stream, sync, and showcase with the confidence that your content performs flawlessly, whether you're online or miles from the nearest signal.";
+      "Presentations that don't just display, they captivate. A media powerhouse built for professionals who refuse to let connectivity dictate their impact. Stream, sync, and showcase with the confidence that your content performs flawlessly, whether you're online or miles from the nearest signal.";
   static const String showItMaxPlayStoreUrl =
       'https://play.google.com/store/apps/details?id=com.showitmax.app';
   static const String showItMaxAppStoreUrl =
       'https://apps.apple.com/app/showitmax/id1234567890';
+
+  static const String imsGo = 'IMSGo';
+  static const String imsGoCategory = 'Healthcare · Mobile EHR';
+  static const String imsGoSubtitle =
+      "Mobile EHR that doesn't just digitize, it liberates. AI-powered ambient scribing, one-touch clinical records, and workflows built for physicians who refuse to sacrifice evenings to documentation. Two hours reclaimed, every day.";
+  static const String imsGoPlayStoreUrl =
+      'https://play.google.com/store/apps/details?id=com.meditab.imsgo&hl=en';
+  static const String imsGoAppStoreUrl =
+      'https://apps.apple.com/us/app/imsgo/id869811884';
+
+  static const String imsCare = 'IMS Care';
+  static const String imsCareCategory = 'Healthcare · Patient Portal';
+  static const String imsCareSubtitle =
+      "Healthcare engagement that actually engages. QR-code check-ins, parking lot arrivals, telemedicine with screen-sharing, and instant access to prescriptions, all without stepping foot in a waiting room.";
+  static const String imsCarePlayStoreUrl =
+      'https://play.google.com/store/apps/details?id=com.medpharm.imscare&hl=en_IN';
+  static const String imsCareAppStoreUrl =
+      'https://apps.apple.com/us/app/ims-care/id1638092813';
 
   /// endregion
 
@@ -116,13 +134,13 @@ class StringC {
     StringC.aboutMeP4
   ];
   static const String aboutMeP1 =
-      "Software engineering isn't just my profession—it's my obsession. I build applications that don't merely function; they feel right. From healthcare systems that become daily companions to platforms that ignite curiosity, I transform abstract ideas into digital experiences that people actually want to use.";
+      "Software engineering isn't just my profession, it's my obsession. I build applications that don't merely function; they feel right. From healthcare systems that become daily companions to platforms that ignite curiosity, I transform abstract ideas into digital experiences that people actually want to use.";
   static const String aboutMeP2 =
       "Currently wielding Flutter as my weapon of choice, but I'm fluent in the language of adaptability. Let's be clear: frameworks come and go, but clarity, performance, and human-centered design are what truly drive my work.";
   static const String aboutMeP3 =
-      "Whether I'm engineering complex architectures or choreographing micro-animations that make interfaces sing, every line of code serves a purpose. I thrive in environments where creativity meets precision—where teams understand that the best products emerge from thoughtful collaboration, not compromise.";
+      "Whether I'm engineering complex architectures or choreographing micro-animations that make interfaces sing, every line of code serves a purpose. I thrive in environments where creativity meets precision, where teams understand that the best products emerge from thoughtful collaboration, not compromise.";
   static const String aboutMeP4 =
-      "When I'm not crafting code, you'll find me lost in the pages of a good book, dissecting cinema frame by frame, exploring new corners of the world, or letting music recalibrate my soul. These aren't just hobbies—they're the fuel that keeps my creativity sharp and my perspective fresh.";
+      "When I'm not crafting code, you'll find me lost in the pages of a good book, dissecting cinema frame by frame, exploring new corners of the world, or letting music recalibrate my soul. These aren't just hobbies, they're the fuel that keeps my creativity sharp and my perspective fresh.";
   static const String availableForInquire =
       ' · AVAILABLE FOR · FREELANCING INQUIRES';
   static const String meditabSoftware = 'Meditab Software';

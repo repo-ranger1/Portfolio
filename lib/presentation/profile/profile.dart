@@ -19,11 +19,12 @@ enum Experience {
     duration: StringC.teamElementalTenor,
     designation: StringC.softwareDeveloper,
   ),
-  crown(
-    company: StringC.crownSoftware,
-    duration: StringC.crownSoftwareTenor,
-    designation: StringC.softwareDeveloper,
-  );
+  // crown(
+  //   company: StringC.crownSoftware,
+  //   duration: StringC.crownSoftwareTenor,
+  //   designation: StringC.softwareDeveloper,
+  // ),
+  ;
 
   const Experience({
     required this.company,
@@ -103,14 +104,14 @@ class Profile extends StatelessWidget {
     );
   }
 
-  // void _scrollToContact() {
-  //   final BuildContext? keyContext = contactKey.currentContext;
-  //
-  //   if (keyContext == null) return;
-  //   Scrollable.ensureVisible(
-  //     keyContext,
-  //     curve: Curves.easeInOut,
-  //     duration: const Duration(milliseconds: 500),
-  //   );
-  // }
+// void _scrollToContact() {
+//   final BuildContext? keyContext = contactKey.currentContext;
+//
+//   if (keyContext == null) return;
+//   Scrollable.ensureVisible(
+//     keyContext,
+//     curve: Curves.easeInOut,
+//     duration: const Duration(milliseconds: 500),
+//   );
+// }
 }

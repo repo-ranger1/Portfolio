@@ -17,14 +17,24 @@ enum ProjectType {
     category: StringC.dosePackDeliveryCategory,
     title: StringC.dosePackDelivery,
     description: StringC.dosePackDeliverySubtitle,
-    technologies: ['Flutter', 'Google Maps', 'Push Notifications', 'Real-time Sync'],
+    technologies: [
+      'Flutter',
+      'Google Maps',
+      'Push Notifications',
+      'Real-time Sync'
+    ],
   ),
   masterpiece(
     number: '03',
     category: StringC.masterpieceStudioCategory,
     title: StringC.masterpieceStudio,
     description: StringC.masterpieceStudioSubtitle,
-    technologies: ['Flutter', 'Custom Painter', 'Hero Animations', 'Image Caching'],
+    technologies: [
+      'Flutter',
+      'Custom Painter',
+      'Hero Animations',
+      'Image Caching'
+    ],
   );
 
   final String number;
@@ -122,7 +132,20 @@ class WorkRoyal extends StatelessWidget {
             ),
           ),
           TextSpan(
-            text: parts[1],
+            text: '${parts[1]} ',
+            style: GoogleFonts.playfairDisplay(
+              fontSize: context.byScreen(
+                mobile: context.sp(48),
+                tablet: context.sp(64),
+                desktop: context.sp(72),
+              ),
+              fontWeight: FontWeight.w400,
+              height: 1.1,
+              color: AppColorRoyal.cream,
+            ),
+          ),
+          TextSpan(
+            text: parts[2],
             style: GoogleFonts.playfairDisplay(
               fontSize: context.byScreen(
                 mobile: context.sp(48),

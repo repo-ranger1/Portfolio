@@ -9,8 +9,26 @@ import 'package:portfolio/core/utils/launcher_util.dart';
 import 'package:portfolio/core/utils/responsive/responsive_utils.dart';
 
 enum ProjectType {
-  mydoses(
+  imsGo(
     number: '01',
+    category: StringC.imsGoCategory,
+    title: StringC.imsGo,
+    description: StringC.imsGoSubtitle,
+    image: AssetC.imsgo,
+    playStoreUrl: StringC.imsGoPlayStoreUrl,
+    appStoreUrl: StringC.imsGoAppStoreUrl,
+  ),
+  imsCare(
+    number: '02',
+    category: StringC.imsCareCategory,
+    title: StringC.imsCare,
+    description: StringC.imsCareSubtitle,
+    image: AssetC.imscare,
+    playStoreUrl: StringC.imsCarePlayStoreUrl,
+    appStoreUrl: StringC.imsCareAppStoreUrl,
+  ),
+  mydoses(
+    number: '03',
     category: StringC.myDosesCategory,
     title: StringC.myDoses,
     description: StringC.myDosesSubtitle,
@@ -19,7 +37,7 @@ enum ProjectType {
     appStoreUrl: StringC.myDosesAppStoreUrl,
   ),
   dosePack(
-    number: '02',
+    number: '04',
     category: StringC.dosePackDeliveryCategory,
     title: StringC.dosePackDelivery,
     description: StringC.dosePackDeliverySubtitle,
@@ -28,7 +46,7 @@ enum ProjectType {
     appStoreUrl: StringC.dosePackDeliveryAppStoreUrl,
   ),
   masterpiece(
-    number: '03',
+    number: '05',
     category: StringC.masterpieceStudioCategory,
     title: StringC.masterpieceStudio,
     description: StringC.masterpieceStudioSubtitle,
@@ -142,7 +160,7 @@ class WorkRoyalV2 extends StatelessWidget {
       text: TextSpan(
         children: [
           TextSpan(
-            text: '${parts[0]} ',
+            text: '${parts[0]} ${parts[1]} ',
             style: GoogleFonts.playfairDisplay(
               fontSize: context.byScreen(
                 mobile: context.sp(48),
@@ -155,7 +173,7 @@ class WorkRoyalV2 extends StatelessWidget {
             ),
           ),
           TextSpan(
-            text: parts[1],
+            text: parts[2],
             style: GoogleFonts.playfairDisplay(
               fontSize: context.byScreen(
                 mobile: context.sp(48),

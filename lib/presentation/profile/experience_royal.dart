@@ -256,8 +256,8 @@ class _TimelineItem extends StatelessWidget {
         return "Leading the mobile frontier in healthcare technology. I don't just build apps here—I architect digital ecosystems that thousands of healthcare professionals rely on daily. Spearheading mission-critical applications, establishing clean architecture patterns, and mentoring developers who share the obsession for excellence.";
       case Experience.teamElement:
         return "Cut my teeth in environments where deadlines are tight and only the adaptable survive. Delivered pixel-perfect implementations, integrated complex third-party services, and established testing protocols that drastically reduced production bugs.";
-      case Experience.crown:
-        return "Where it all began. Discovered mobile development and never looked back. Built prototype applications, collaborated with senior developers, and laid the foundation for a career built on curiosity and precision.";
+      // case Experience.crown:
+      //   return "Where it all began. Discovered mobile development and never looked back. Built prototype applications, collaborated with senior developers, and laid the foundation for a career built on curiosity and precision.";
     }
   }
 }

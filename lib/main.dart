@@ -8,7 +8,6 @@ import 'dependency_injector.dart';
 /// the session and need to navigate to the [LoginScreen]
 /// from the any [Repositories].
 final GlobalKey<NavigatorState> globalNavKey = GlobalKey<NavigatorState>();
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
