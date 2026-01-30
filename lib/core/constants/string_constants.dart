@@ -179,7 +179,7 @@ class StringC {
 
   /// region Footer
   static const String craftedWithPassion =
-      "Crafted with intention. Built with passion.";
+      "Crafted with intention. Built with passion. In Flutter";
 
   /// endregion
 

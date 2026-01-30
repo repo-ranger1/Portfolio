@@ -75473,7 +75473,7 @@ return A.db(r,q,B.x,r,r,B.A4,r,r,r,new A.bb(o,n,o,n),r,r,p.a.a)},
 GW(a){var s=null
 return A.ci("\xa9 "+A.aty(new A.ii(Date.now(),0,!1))+" Gautam Manwani",s,s,s,A.er().$2$color$fontSize(B.bQ,A.aG(a,16)),s)},
 GZ(a){var s=null,r=A.b7(a,s,t.w).w.a.a<600?B.cs:B.h_
-return A.ci("Crafted with intention. Built with passion.",s,s,s,A.h0().$3$color$fontSize$letterSpacing(B.bQ,A.aG(a,12),1),r)}}
+return A.ci("Crafted with intention. Built with passion. In Flutter",s,s,s,A.h0().$3$color$fontSize$letterSpacing(B.bQ,A.aG(a,12),1),r)}}
 A.y4.prototype={
 a9(){return new A.CH(null,null)}}
 A.CH.prototype={
