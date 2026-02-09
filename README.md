@@ -260,7 +260,6 @@ The project follows Clean Architecture principles:
 - **Email**: gautammanwani04@gmail.com
 - **LinkedIn**: [gautam-manwani](https://www.linkedin.com/in/gautam-manwani-462495230/)
 - **Medium**: [@gautam007](http://gautam007.medium.com)
-- **Instagram**: [@gautammanwani](https://instagram.com/gautammanwani)
 - **Stack Overflow**: [Pixel](https://stackoverflow.com/users/21977414/pixel)
 - **Resume**: [View Resume](https://docs.google.com/document/d/1krm-_wcuDGapzvUqhy8eWsbKzKGj_og7gwKaEpkxKxU/edit?usp=drive_link)
 
