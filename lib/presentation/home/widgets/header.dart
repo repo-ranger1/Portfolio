@@ -196,38 +196,106 @@ class _NavLink extends StatefulWidget {
   State<_NavLink> createState() => _NavLinkState();
 }
 
-class _NavLinkState extends State<_NavLink> {
+class _NavLinkState extends State<_NavLink>
+    with SingleTickerProviderStateMixin {
   bool _isHovered = false;
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+  late Animation<double> _underlineAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+
+    // Scale animation (like email)
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.05).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
+    );
+
+    // Underline animation
+    _underlineAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
+      onEnter: (_) {
+        setState(() => _isHovered = true);
+        _controller.forward();
+      },
+      onExit: (_) {
+        setState(() => _isHovered = false);
+        _controller.reverse();
+      },
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: widget.onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          padding: EdgeInsets.symmetric(
-            horizontal: context.spacing(16),
-            vertical: context.spacing(8),
-          ),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: _isHovered ? AppColorRoyal.gold : Colors.transparent,
-                width: 2,
-              ),
+        child: ScaleTransition(
+          scale: _scaleAnimation,
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: context.spacing(16),
+              vertical: context.spacing(8),
             ),
-          ),
-          child: Text(
-            widget.title.toUpperCase(),
-            style: GoogleFonts.outfit(
-              fontSize: context.sp(11),
-              fontWeight: FontWeight.w500,
-              letterSpacing: 2.5,
-              color: _isHovered ? AppColorRoyal.gold : AppColorRoyal.cream,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Text with gradient on hover (like email)
+                ShaderMask(
+                  shaderCallback: (bounds) => _isHovered
+                      ? AppColorRoyal.goldGradient.createShader(bounds)
+                      : const LinearGradient(
+                          colors: [AppColorRoyal.cream, AppColorRoyal.cream],
+                        ).createShader(bounds),
+                  child: AnimatedDefaultTextStyle(
+                    duration: const Duration(milliseconds: 300),
+                    style: GoogleFonts.outfit(
+                      fontSize: context.sp(11),
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: _isHovered ? 3.0 : 2.5,
+                      color: Colors.white, // Required for ShaderMask
+                    ),
+                    child: Text(widget.title.toUpperCase()),
+                  ),
+                ),
+                SizedBox(height: context.spacing(4)),
+                // Animated underline with gradient and glow (like email)
+                AnimatedBuilder(
+                  animation: _underlineAnimation,
+                  builder: (context, child) {
+                    return AnimatedContainer(
+                      duration: const Duration(milliseconds: 400),
+                      curve: Curves.easeOutCubic,
+                      height: 2,
+                      width: 60 * _underlineAnimation.value,
+                      decoration: BoxDecoration(
+                        gradient: AppColorRoyal.goldGradient,
+                        boxShadow: _isHovered
+                            ? [
+                                BoxShadow(
+                                  color: AppColorRoyal.gold.withValues(alpha: 0.5),
+                                  blurRadius: 10,
+                                  spreadRadius: 1,
+                                ),
+                              ]
+                            : null,
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ),

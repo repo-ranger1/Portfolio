@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/common/widgets/scroll_reveal.dart';
 import 'package:portfolio/core/constants/string_constants.dart';
 import 'package:portfolio/core/utils/app/app_color_royal.dart';
 import 'package:portfolio/core/utils/responsive/responsive_utils.dart';
@@ -121,11 +122,15 @@ class Profile extends StatelessWidget {
         final index = entry.key;
         final text = entry.value;
 
-        return Padding(
-          padding: EdgeInsets.only(
-            bottom: index < StringC.aboutMe.length - 1 ? context.spacing(32) : 0,
+        return ScrollReveal(
+          delay: Duration(milliseconds: index * 150),
+          duration: const Duration(milliseconds: 700),
+          child: Padding(
+            padding: EdgeInsets.only(
+              bottom: index < StringC.aboutMe.length - 1 ? context.spacing(32) : 0,
+            ),
+            child: _buildParagraph(context, text, isFirst: index == 0),
           ),
-          child: _buildParagraph(context, text, isFirst: index == 0),
         );
       }).toList(),
     );

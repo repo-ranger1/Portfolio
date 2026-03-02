@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/common/widgets/animated_timeline.dart';
+import 'package:portfolio/common/widgets/scroll_reveal.dart';
 import 'package:portfolio/core/constants/string_constants.dart';
 import 'package:portfolio/core/utils/app/app_color_royal.dart';
 import 'package:portfolio/core/utils/responsive/responsive_utils.dart';
@@ -146,6 +148,7 @@ class Experience extends StatelessWidget {
           return _TimelineItem(
             experience: entry.value,
             isLast: entry.key == ExperienceType.values.length - 1,
+            index: entry.key,
           );
         }).toList(),
       ),
@@ -156,10 +159,12 @@ class Experience extends StatelessWidget {
 class _TimelineItem extends StatelessWidget {
   final ExperienceType experience;
   final bool isLast;
+  final int index;
 
   const _TimelineItem({
     required this.experience,
     required this.isLast,
+    required this.index,
   });
 
   @override
@@ -171,105 +176,86 @@ class _TimelineItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Timeline line and dot
-          Column(
-            children: [
-              Container(
-                width: 9,
-                height: 9,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: AppColorRoyal.gold,
-                    width: 2,
-                  ),
-                  color: AppColorRoyal.obsidian,
-                ),
-              ),
-              if (!isLast)
-                Container(
-                  width: 1,
-                  height: context.spacing(200),
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        AppColorRoyal.gold,
-                        AppColorRoyal.goldDark,
-                        Colors.transparent,
-                      ],
-                    ),
-                  ),
-                ),
-            ],
+          // Animated Timeline line and dot
+          AnimatedTimelineDot(
+            isLast: isLast,
+            lineHeight: context.spacing(200),
+            delay: Duration(milliseconds: index * 200),
           ),
 
           SizedBox(width: context.spacing(64)),
 
-          // Content
+          // Content with scroll reveal
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Duration
-                Text(
-                  experience.duration.toUpperCase(),
-                  style: GoogleFonts.outfit(
-                    fontSize: context.sp(12),
-                    fontWeight: FontWeight.w400,
-                    letterSpacing: 2,
-                    color: AppColorRoyal.gold,
-                  ),
-                ),
-
-                SizedBox(height: context.spacing(12)),
-
-                // Role
-                Text(
-                  experience.designation,
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: context.byScreen(
-                      mobile: context.sp(32),
-                      tablet: context.sp(40),
-                      desktop: context.sp(40),
-                    ),
-                    fontWeight: FontWeight.w400,
-                    height: 1.2,
-                    color: AppColorRoyal.cream,
-                  ),
-                ),
-
-                SizedBox(height: context.spacing(8)),
-
-                // Company
-                Text(
-                  experience.company,
-                  style: GoogleFonts.cormorantGaramond(
-                    fontSize: context.sp(22),
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.italic,
-                    color: AppColorRoyal.mist,
-                  ),
-                ),
-
-                SizedBox(height: context.spacing(24)),
-
-                // Description
-                Text(
-                  _getDescription(experience),
-                  style: GoogleFonts.outfit(
-                    fontSize: context.sp(16),
-                    fontWeight: FontWeight.w400,
-                    height: 1.8,
-                    color: AppColorRoyal.cream.withValues(alpha: 0.85),
-                  ),
-                ),
-              ],
+            child: ScrollReveal(
+              delay: Duration(milliseconds: index * 200 + 100),
+              duration: const Duration(milliseconds: 700),
+              child: _buildContent(context),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Duration
+        Text(
+          experience.duration.toUpperCase(),
+          style: GoogleFonts.outfit(
+            fontSize: context.sp(12),
+            fontWeight: FontWeight.w400,
+            letterSpacing: 2,
+            color: AppColorRoyal.gold,
+          ),
+        ),
+
+        SizedBox(height: context.spacing(12)),
+
+        // Role
+        Text(
+          experience.designation,
+          style: GoogleFonts.playfairDisplay(
+            fontSize: context.byScreen(
+              mobile: context.sp(32),
+              tablet: context.sp(40),
+              desktop: context.sp(40),
+            ),
+            fontWeight: FontWeight.w400,
+            height: 1.2,
+            color: AppColorRoyal.cream,
+          ),
+        ),
+
+        SizedBox(height: context.spacing(8)),
+
+        // Company
+        Text(
+          experience.company,
+          style: GoogleFonts.cormorantGaramond(
+            fontSize: context.sp(22),
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.italic,
+            color: AppColorRoyal.mist,
+          ),
+        ),
+
+        SizedBox(height: context.spacing(24)),
+
+        // Description
+        Text(
+          _getDescription(experience),
+          style: GoogleFonts.outfit(
+            fontSize: context.sp(16),
+            fontWeight: FontWeight.w400,
+            height: 1.8,
+            color: AppColorRoyal.cream.withValues(alpha: 0.85),
+          ),
+        ),
+      ],
     );
   }
 
@@ -279,8 +265,7 @@ class _TimelineItem extends StatelessWidget {
         return "Leading the mobile frontier in healthcare technology. I don't just build apps here—I architect digital ecosystems that thousands of healthcare professionals rely on daily. Spearheading mission-critical applications, establishing clean architecture patterns, and mentoring developers who share the obsession for excellence.";
       case ExperienceType.teamElement:
         return "Cut my teeth in environments where deadlines are tight and only the adaptable survive. Delivered pixel-perfect implementations, integrated complex third-party services, and established testing protocols that drastically reduced production bugs.";
-      // case ExperienceType.crown:
-      //   return "Where it all began. Discovered mobile development and never looked back. Built prototype applications, collaborated with senior developers, and laid the foundation for a career built on curiosity and precision.";
     }
   }
 }
+

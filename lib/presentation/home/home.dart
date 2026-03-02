@@ -35,8 +35,19 @@ class _HomeState extends State<Home> {
   /// Collection of all available modules displayed on the website.
   late final List<ModuleEntity> _modules;
 
+  /// Scroll controller for tracking scroll position
+  final ScrollController _scrollController = ScrollController();
+
+  /// Header visibility state
+  bool _showHeader = true;
+  double _lastScrollOffset = 0;
+
+  /// Scroll progress (0.0 to 1.0)
+  double _scrollProgress = 0.0;
+
   @override
   void initState() {
+    super.initState();
     // Populating the module.
     // Note: The first module (landing page) is not shown in navigation
     _modules = [
@@ -66,7 +77,47 @@ class _HomeState extends State<Home> {
         page: Contact(key: contactKey),
       ),
     ];
-    super.initState();
+
+    // Add scroll listener
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_onScroll);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    final currentScroll = _scrollController.offset;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+
+    // Update scroll progress
+    setState(() {
+      _scrollProgress = (currentScroll / maxScroll).clamp(0.0, 1.0);
+    });
+
+    // Show/hide header based on scroll direction
+    // Only after scrolling past the hero section (800px)
+    if (currentScroll > 800) {
+      final scrollingDown = currentScroll > _lastScrollOffset;
+      final shouldShow = !scrollingDown || currentScroll < 100;
+
+      if (_showHeader != shouldShow) {
+        setState(() {
+          _showHeader = shouldShow;
+        });
+      }
+    } else {
+      if (!_showHeader) {
+        setState(() {
+          _showHeader = true;
+        });
+      }
+    }
+
+    _lastScrollOffset = currentScroll;
   }
 
   @override
@@ -75,7 +126,28 @@ class _HomeState extends State<Home> {
       backgroundColor: AppColorRoyal.obsidian,
       body: Stack(
         children: [
+          // Scroll Progress Indicator
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 100),
+              height: 3,
+              color: AppColorRoyal.gold.withValues(alpha: _scrollProgress),
+              child: FractionallySizedBox(
+                alignment: Alignment.centerLeft,
+                widthFactor: _scrollProgress,
+                child: Container(
+                  color: AppColorRoyal.gold,
+                ),
+              ),
+            ),
+          ),
+
+          // Main content
           SingleChildScrollView(
+            controller: _scrollController,
             child: Column(
               children: [
                 // Hero landing section
@@ -95,7 +167,16 @@ class _HomeState extends State<Home> {
               ],
             ).parentWidth,
           ),
-          Header(modules: _modules),
+
+          // Animated Header
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+            top: _showHeader ? 0 : -100,
+            left: 0,
+            right: 0,
+            child: Header(modules: _modules),
+          ),
         ],
       ),
     );

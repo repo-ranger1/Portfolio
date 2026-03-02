@@ -1,24 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/common/widgets/scroll_reveal.dart';
 import 'package:portfolio/core/constants/asset_constants.dart';
 import 'package:portfolio/core/constants/string_constants.dart';
 import 'package:portfolio/core/utils/app/app_color_royal.dart';
 import 'package:portfolio/core/utils/launcher_util.dart';
 import 'package:portfolio/core/utils/responsive/responsive_utils.dart';
-
-enum MediaLinkE {
-  medium(title: StringC.medium, url: StringC.mediumUrl),
-  stackOverflow(title: StringC.stackOverflow, url: StringC.stackOverflowUrl),
-  email(title: StringC.email, url: StringC.emailUrl),
-  linkedIn(title: StringC.linkedIn, url: StringC.linkedInUrl),
-  resume(title: StringC.resume, url: StringC.resumeUrl);
-
-  final String title;
-  final String url;
-
-  const MediaLinkE({required this.title, required this.url});
-}
+import 'package:portfolio/presentation/contact/widgets/contact_link.dart';
+import 'package:portfolio/presentation/contact/widgets/hover_email_text.dart';
+import 'package:portfolio/presentation/contact/widgets/media_link_type.dart';
 
 class Contact extends StatelessWidget {
   const Contact({super.key});
@@ -44,15 +34,34 @@ class Contact extends StatelessWidget {
       ),
       child: Column(
         children: [
-          _buildLabel(context),
+          ScrollReveal(
+            duration: const Duration(milliseconds: 600),
+            child: _buildLabel(context),
+          ),
           SizedBox(height: context.spacing(32)),
-          _buildTitle(context),
+          ScrollReveal(
+            delay: const Duration(milliseconds: 150),
+            duration: const Duration(milliseconds: 700),
+            child: _buildTitle(context),
+          ),
           SizedBox(height: context.spacing(24)),
-          _buildSubtitle(context),
+          ScrollReveal(
+            delay: const Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 600),
+            child: _buildSubtitle(context),
+          ),
           SizedBox(height: context.spacing(80)),
-          _buildContactLinks(context),
+          ScrollReveal(
+            delay: const Duration(milliseconds: 450),
+            duration: const Duration(milliseconds: 700),
+            child: _buildContactLinks(context),
+          ),
           SizedBox(height: context.spacing(80)),
-          _buildEmail(context),
+          ScrollReveal(
+            delay: const Duration(milliseconds: 600),
+            duration: const Duration(milliseconds: 700),
+            child: _buildEmail(context),
+          ),
         ],
       ),
     );
@@ -62,11 +71,7 @@ class Contact extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          width: 40,
-          height: 1,
-          color: AppColorRoyal.gold,
-        ),
+        Container(width: 40, height: 1, color: AppColorRoyal.gold),
         SizedBox(width: context.spacing(16)),
         Text(
           StringC.contactLabel.toUpperCase(),
@@ -102,9 +107,11 @@ class Contact extends StatelessWidget {
                     desktop: context.sp(96),
                   ),
                   fontWeight: FontWeight.w400,
-                  fontStyle: isItalic ? FontStyle.italic : FontStyle.normal,
+                  fontStyle:
+                      isItalic ? FontStyle.italic : FontStyle.normal,
                   height: 1.1,
-                  color: isItalic ? AppColorRoyal.gold : AppColorRoyal.cream,
+                  color:
+                      isItalic ? AppColorRoyal.gold : AppColorRoyal.cream,
                 ),
               );
             }).toList(),
@@ -150,10 +157,7 @@ class Contact extends StatelessWidget {
       runSpacing: context.spacing(48),
       alignment: WrapAlignment.center,
       children: links.map((link) {
-        return _ContactLink(
-          type: link.$1,
-          icon: link.$2,
-        );
+        return ContactLink(type: link.$1, icon: link.$2);
       }).toList(),
     );
   }
@@ -163,118 +167,7 @@ class Contact extends StatelessWidget {
       onTap: () => LauncherUtils.launchEmail(email: StringC.emailUrl),
       child: const MouseRegion(
         cursor: SystemMouseCursors.click,
-        child: _HoverEmailText(
-          email: StringC.emailUrl,
-        ),
-      ),
-    );
-  }
-}
-
-class _ContactLink extends StatefulWidget {
-  final String icon;
-  final MediaLinkE type;
-
-  const _ContactLink({
-    required this.type,
-    required this.icon,
-  });
-
-  @override
-  State<_ContactLink> createState() => _ContactLinkState();
-}
-
-class _ContactLinkState extends State<_ContactLink> {
-  bool _isHovered = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: GestureDetector(
-        onTap: _onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          transform: Matrix4.translationValues(0, _isHovered ? -5 : 0, 0),
-          child: Column(
-            children: [
-              SvgPicture.asset(
-                width: 40,
-                height: 40,
-                widget.icon,
-                colorFilter: ColorFilter.mode(
-                  _isHovered ? AppColorRoyal.gold : AppColorRoyal.cream,
-                  BlendMode.srcIn,
-                ),
-              ),
-              SizedBox(height: context.spacing(16)),
-              Text(
-                widget.type.title.toUpperCase(),
-                style: GoogleFonts.outfit(
-                  fontSize: context.sp(12),
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 2,
-                  color: _isHovered ? AppColorRoyal.gold : AppColorRoyal.cream,
-                ),
-              ),
-              SizedBox(height: context.spacing(8)),
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                width: _isHovered ? 60 : 0,
-                height: 1,
-                color: AppColorRoyal.gold,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _onTap() => LauncherUtils.launchLink(link: widget.type.url);
-}
-
-class _HoverEmailText extends StatefulWidget {
-  final String email;
-
-  const _HoverEmailText({required this.email});
-
-  @override
-  State<_HoverEmailText> createState() => _HoverEmailTextState();
-}
-
-class _HoverEmailTextState extends State<_HoverEmailText> {
-  bool _isHovered = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: Column(
-        children: [
-          Text(
-            widget.email,
-            style: GoogleFonts.playfairDisplay(
-              fontSize: context.byScreen(
-                mobile: context.sp(24),
-                tablet: context.sp(32),
-                desktop: context.sp(40),
-              ),
-              fontWeight: FontWeight.w400,
-              fontStyle: FontStyle.italic,
-              color: AppColorRoyal.gold,
-            ),
-          ),
-          SizedBox(height: context.spacing(4)),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            width: _isHovered ? 200 : 0,
-            height: 1,
-            color: AppColorRoyal.gold,
-          ),
-        ],
+        child: HoverEmailText(email: StringC.emailUrl),
       ),
     );
   }

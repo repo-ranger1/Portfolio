@@ -15,6 +15,7 @@ class _SkillsMarqueeState extends State<SkillsMarquee>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
+  bool _isHovered = false;
 
   @override
   void initState() {
@@ -36,25 +37,50 @@ class _SkillsMarqueeState extends State<SkillsMarquee>
     super.dispose();
   }
 
+  void _onHoverChange(bool isHovered) {
+    setState(() => _isHovered = isHovered);
+    if (isHovered) {
+      // Slow down to 20% speed
+      _controller.animateTo(
+        _controller.value,
+        duration: Duration.zero,
+      );
+      _controller.duration = const Duration(seconds: 150); // 5x slower
+      _controller.repeat();
+    } else {
+      // Back to normal speed
+      _controller.animateTo(
+        _controller.value,
+        duration: Duration.zero,
+      );
+      _controller.duration = const Duration(seconds: 30);
+      _controller.repeat();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: AppColorRoyal.charcoal,
-        border: Border(
-          top: BorderSide(color: AppColorRoyal.smoke, width: 1),
-          bottom: BorderSide(color: AppColorRoyal.smoke, width: 1),
+    return MouseRegion(
+      onEnter: (_) => _onHoverChange(true),
+      onExit: (_) => _onHoverChange(false),
+      child: Container(
+        decoration: const BoxDecoration(
+          color: AppColorRoyal.charcoal,
+          border: Border(
+            top: BorderSide(color: AppColorRoyal.smoke, width: 1),
+            bottom: BorderSide(color: AppColorRoyal.smoke, width: 1),
+          ),
         ),
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 48),
-      child: AnimatedBuilder(
-        animation: _animation,
-        builder: (context, child) {
-          return CustomPaint(
-            painter: _MarqueePainter(_animation.value),
-            size: Size(MediaQuery.of(context).size.width, 80),
-          );
-        },
+        padding: const EdgeInsets.symmetric(vertical: 48),
+        child: AnimatedBuilder(
+          animation: _animation,
+          builder: (context, child) {
+            return CustomPaint(
+              painter: _MarqueePainter(_animation.value, isHovered: _isHovered),
+              size: Size(MediaQuery.of(context).size.width, 80),
+            );
+          },
+        ),
       ),
     );
   }
@@ -62,9 +88,10 @@ class _SkillsMarqueeState extends State<SkillsMarquee>
 
 class _MarqueePainter extends CustomPainter {
   final double animation;
+  final bool isHovered;
   static const List<String> skills = StringC.skills;
 
-  _MarqueePainter(this.animation);
+  _MarqueePainter(this.animation, {this.isHovered = false});
 
   @override
   void paint(Canvas canvas, Size size) {
