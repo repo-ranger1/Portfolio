@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:portfolio/core/extensions/context_extensions.dart';
-import 'package:portfolio/core/extensions/widget_extensions.dart';
 
-import '../../common/widgets/cyclic_text.dart';
 import '../../core/constants/asset_constants.dart';
 
 ///Meditab Software Inc. CONFIDENTIAL
@@ -38,19 +35,11 @@ class _ConfigPageState extends State<ConfigPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Lottie.asset(
-            AssetC.configAnimation,
-          ),
-          CyclingTextWidget(
-            messages: const [''],
-            pauseTime: const Duration(seconds: 5),
-            textStyle: context.tt.titleMedium?.copyWith(),
-          ),
-        ],
-      ).parentWidth,
+      body: Center(
+        child: Lottie.asset(
+          AssetC.configAnimation,
+        ),
+      ),
     );
   }
 }

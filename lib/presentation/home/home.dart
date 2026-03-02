@@ -5,12 +5,12 @@ import 'package:portfolio/core/constants/string_constants.dart';
 import 'package:portfolio/core/extensions/widget_extensions.dart';
 import 'package:portfolio/core/utils/app/app_color_royal.dart';
 import 'package:portfolio/core/utils/responsive/responsive_utils.dart';
-import 'package:portfolio/presentation/contact/contact_royal.dart';
-import 'package:portfolio/presentation/home/landing_royal.dart';
+import 'package:portfolio/presentation/contact/contact.dart';
+import 'package:portfolio/presentation/home/landing.dart';
 import 'package:portfolio/presentation/home/widgets/header.dart';
-import 'package:portfolio/presentation/profile/experience_royal.dart';
-import 'package:portfolio/presentation/profile/profile_royal.dart';
-import 'package:portfolio/presentation/work/work_royal_v2.dart';
+import 'package:portfolio/presentation/profile/experience.dart';
+import 'package:portfolio/presentation/profile/profile.dart';
+import 'package:portfolio/presentation/work/work.dart';
 
 import '../../domain/entities/module_entity.dart';
 
@@ -43,27 +43,27 @@ class _HomeState extends State<Home> {
       ModuleEntity(
         key: meKey,
         title: StringC.me,
-        page: LandingRoyal(key: meKey),
+        page: Landing(key: meKey),
       ),
       ModuleEntity(
         key: profileKey,
         title: StringC.profile,
-        page: ProfileRoyal(key: profileKey),
+        page: Profile(key: profileKey),
       ),
       ModuleEntity(
         key: workKey,
         title: StringC.work,
-        page: WorkRoyalV2(key: workKey),
+        page: Work(key: workKey),
       ),
       ModuleEntity(
         key: experienceKey,
         title: StringC.experience,
-        page: ExperienceRoyal(key: experienceKey),
+        page: Experience(key: experienceKey),
       ),
       ModuleEntity(
         key: contactKey,
         title: StringC.contact,
-        page: ContactRoyal(key: contactKey),
+        page: Contact(key: contactKey),
       ),
     ];
     super.initState();
