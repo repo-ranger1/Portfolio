@@ -35,7 +35,7 @@ class Work extends StatelessWidget {
           ),
 
           // Projects with staggered scroll animation
-          ...ProjectType.values.asMap().entries.map((entry) {
+          ...variantProjects.asMap().entries.map((entry) {
             return ScrollReveal(
               delay: Duration(milliseconds: entry.key * 150),
               duration: const Duration(milliseconds: 800),

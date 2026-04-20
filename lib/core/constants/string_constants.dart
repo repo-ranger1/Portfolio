@@ -1,24 +1,10 @@
-///Meditab Software Inc. CONFIDENTIAL
-///__________________
-///
-/// [2025] Meditab Software Inc.
-/// All Rights Reserved.
-///
-///NOTICE:  All information contained herein is, and remains
-///the property of Meditab Software Inc. and its suppliers,
-///if any.  The intellectual and technical concepts contained
-///herein are proprietary to Meditab Software Incorporated
-///and its suppliers and may be covered by U.S. and Foreign Patents,
-///patents in process, and are protected by trade secret or copyright law.
-///Dissemination of this information or reproduction of this material
-///is strictly forbidden unless prior written permission is obtained
-///from Meditab Software Incorporated.
-///
-///File Name: string_constants
-///
-///@author Gautam Manvani (gautamm@meditab.com) Meditab Software Inc.
-///@version 1.0.0
-///@since 09/05/25 13:27
+import 'package:portfolio/core/constants/variant.dart';
+import 'package:portfolio/core/constants/variants/android_native_strings.dart';
+import 'package:portfolio/core/constants/variants/flutter_android_strings.dart';
+import 'package:portfolio/core/constants/variants/flutter_ios_strings.dart';
+import 'package:portfolio/core/constants/variants/flutter_strings.dart';
+import 'package:portfolio/core/constants/variants/ios_native_strings.dart';
+
 class StringC {
   StringC._();
 
@@ -27,7 +13,7 @@ class StringC {
 
   /// endregion
 
-  /// region Header
+  /// region Header — same across all variants
   static const String headerLogo = 'Gautam Manwani';
   static const String me = 'Me';
   static const String work = 'Work';
@@ -36,21 +22,57 @@ class StringC {
 
   /// endregion
 
-  /// region Landing
+  /// region Identity — same across all variants
   static const String fullName = 'Gautam Manwani';
   static const String gautam = 'Gautam';
   static const String manwani = 'Manwani';
-  static const String heroEyebrow = 'Software Engineer & Digital Craftsman';
-  static const String heroTitle1 = 'Building apps';
-  static const String heroTitle2 = 'that matter.';
-  static const String heroTagline =
-      "I don't just write code. I architect experiences that breathe, move, and leave an impression.";
-  static const String landingSubtitle =
-      'Flutter & Mobile Developer\nbuilding high-performance apps.';
 
   /// endregion
 
-  /// region Work
+  /// region Landing — variant-aware
+  static String get heroEyebrow {
+    if (Variant.isIOSNative) return IOSNativeStrings.heroEyebrow;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.heroEyebrow;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.heroEyebrow;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.heroEyebrow;
+    return FlutterStrings.heroEyebrow;
+  }
+
+  static String get heroTitle1 {
+    if (Variant.isIOSNative) return IOSNativeStrings.heroTitle1;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.heroTitle1;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.heroTitle1;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.heroTitle1;
+    return FlutterStrings.heroTitle1;
+  }
+
+  static String get heroTitle2 {
+    if (Variant.isIOSNative) return IOSNativeStrings.heroTitle2;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.heroTitle2;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.heroTitle2;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.heroTitle2;
+    return FlutterStrings.heroTitle2;
+  }
+
+  static String get heroTagline {
+    if (Variant.isIOSNative) return IOSNativeStrings.heroTagline;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.heroTagline;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.heroTagline;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.heroTagline;
+    return FlutterStrings.heroTagline;
+  }
+
+  static String get landingSubtitle {
+    if (Variant.isIOSNative) return IOSNativeStrings.landingSubtitle;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.landingSubtitle;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.landingSubtitle;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.landingSubtitle;
+    return FlutterStrings.landingSubtitle;
+  }
+
+  /// endregion
+
+  /// region Work — same across all variants
   static const String workLabel = 'Selected Work';
   static const String workTitle = 'Projects that speak.';
 
@@ -122,25 +144,52 @@ class StringC {
 
   /// endregion
 
-  /// region profile
+  /// region Profile — variant-aware
   static const String experience = 'Experience';
   static const String aboutLabel = 'The Philosophy';
-  static const String aboutTitle =
-      'Code is poetry.\nI write it like I mean it.';
-  static const List<String> aboutMe = [
-    StringC.aboutMeP1,
-    StringC.aboutMeP2,
-    StringC.aboutMeP3,
-    StringC.aboutMeP4
-  ];
-  static const String aboutMeP1 =
-      "Software engineering isn't just my profession, it's my obsession. I build applications that don't merely function; they feel right. From healthcare systems that become daily companions to platforms that ignite curiosity, I transform abstract ideas into digital experiences that people actually want to use.";
-  static const String aboutMeP2 =
-      "Currently wielding Flutter as my weapon of choice, but I'm fluent in the language of adaptability. Let's be clear: frameworks come and go, but clarity, performance, and human-centered design are what truly drive my work.";
-  static const String aboutMeP3 =
-      "Whether I'm engineering complex architectures or choreographing micro-animations that make interfaces sing, every line of code serves a purpose. I thrive in environments where creativity meets precision, where teams understand that the best products emerge from thoughtful collaboration, not compromise.";
-  static const String aboutMeP4 =
-      "When I'm not crafting code, you'll find me lost in the pages of a good book, dissecting cinema frame by frame, exploring new corners of the world, or letting music recalibrate my soul. These aren't just hobbies, they're the fuel that keeps my creativity sharp and my perspective fresh.";
+
+  static String get aboutTitle {
+    if (Variant.isIOSNative) return IOSNativeStrings.aboutTitle;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.aboutTitle;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.aboutTitle;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.aboutTitle;
+    return FlutterStrings.aboutTitle;
+  }
+
+  static List<String> get aboutMe => [aboutMeP1, aboutMeP2, aboutMeP3, aboutMeP4];
+
+  static String get aboutMeP1 {
+    if (Variant.isIOSNative) return IOSNativeStrings.aboutP1;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.aboutP1;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.aboutP1;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.aboutP1;
+    return FlutterStrings.aboutP1;
+  }
+
+  static String get aboutMeP2 {
+    if (Variant.isIOSNative) return IOSNativeStrings.aboutP2;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.aboutP2;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.aboutP2;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.aboutP2;
+    return FlutterStrings.aboutP2;
+  }
+
+  static String get aboutMeP3 {
+    if (Variant.isIOSNative) return IOSNativeStrings.aboutP3;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.aboutP3;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.aboutP3;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.aboutP3;
+    return FlutterStrings.aboutP3;
+  }
+
+  static String get aboutMeP4 {
+    if (Variant.isIOSNative) return IOSNativeStrings.aboutP4;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.aboutP4;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.aboutP4;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.aboutP4;
+    return FlutterStrings.aboutP4;
+  }
+
   static const String availableForInquire =
       ' · AVAILABLE FOR · FREELANCING INQUIRES';
   static const String meditabSoftware = 'Meditab Software';
@@ -154,7 +203,7 @@ class StringC {
 
   /// endregion
 
-  /// region Contact
+  /// region Contact — same across all variants
   static const String contactLabel = "Let's Talk";
   static const String contactTitle = "Ready to build\nsomething remarkable?";
   static const String contactSubtitle =
@@ -177,25 +226,36 @@ class StringC {
 
   /// endregion
 
-  /// region Footer
-  static const String craftedWithPassion =
-      "Crafted with intention. Built with passion. In Flutter";
+  /// region Footer — variant-aware
+  static String get craftedWithPassion {
+    if (Variant.isIOSNative) return IOSNativeStrings.craftedWithPassion;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.craftedWithPassion;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.craftedWithPassion;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.craftedWithPassion;
+    return FlutterStrings.craftedWithPassion;
+  }
 
   /// endregion
 
-  /// region Skills Marquee
-  static const List<String> skills = [
-    'Flutter',
-    'Dart',
-    'Clean Architecture',
-    'React Native',
-    'Custom Animations',
-    'REST APIs',
-    'Firebase',
-    'Problem Solving',
-    'State Management',
-    'Performance',
-  ];
+  /// region Skills Marquee — variant-aware
+  static List<String> get skills {
+    if (Variant.isIOSNative) return IOSNativeStrings.skills;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.skills;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.skills;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.skills;
+    return FlutterStrings.skills;
+  }
+
+  /// endregion
+
+  /// region Project keys — which projects to show per variant
+  static List<String> get projectKeys {
+    if (Variant.isIOSNative) return IOSNativeStrings.projectKeys;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.projectKeys;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.projectKeys;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.projectKeys;
+    return FlutterStrings.projectKeys;
+  }
 
   /// endregion
 }

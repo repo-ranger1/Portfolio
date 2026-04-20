@@ -41,16 +41,10 @@ class _MagneticWidgetState extends State<MagneticWidget> {
             _offset = direction * widget.magneticStrength;
           });
         } else {
-          setState(() {
-            _offset = Offset.zero;
-          });
+          setState(() => _offset = Offset.zero);
         }
       },
-      onExit: (_) {
-        setState(() {
-          _offset = Offset.zero;
-        });
-      },
+      onExit: (_) => setState(() => _offset = Offset.zero),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeOut,

@@ -1,6 +1,19 @@
 import 'package:portfolio/core/constants/asset_constants.dart';
 import 'package:portfolio/core/constants/string_constants.dart';
 
+/// Returns the projects to display for the current build variant,
+/// in the order defined by [StringC.projectKeys].
+List<ProjectType> get variantProjects {
+  final keys = StringC.projectKeys;
+  final all = {for (final p in ProjectType.values) p.name: p};
+  final numbered = <ProjectType>[];
+  for (var i = 0; i < keys.length; i++) {
+    final project = all[keys[i]];
+    if (project != null) numbered.add(project);
+  }
+  return numbered;
+}
+
 enum ProjectType {
   imsGo(
     number: '01',

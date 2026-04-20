@@ -236,10 +236,10 @@ class _LandingState extends State<Landing>
                         FadeTransition(
                           opacity: _fadeAnimation,
                           child: Padding(
-                            padding: const EdgeInsets.all(20),
+                            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                             child: MagneticWidget(
                               magneticDistance: 150,
-                              magneticStrength: 0.25,
+                              magneticStrength: 0.2,
                               child: HeroCTA(onTap: _scrollToWork),
                             ),
                           ),

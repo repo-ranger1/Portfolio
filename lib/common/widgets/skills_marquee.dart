@@ -89,7 +89,7 @@ class _SkillsMarqueeState extends State<SkillsMarquee>
 class _MarqueePainter extends CustomPainter {
   final double animation;
   final bool isHovered;
-  static const List<String> skills = StringC.skills;
+  static List<String> get skills => StringC.skills;
 
   _MarqueePainter(this.animation, {this.isHovered = false});
 
