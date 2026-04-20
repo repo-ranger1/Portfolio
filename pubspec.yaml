@@ -159,7 +159,7 @@ flutter:
           weight: 200
         - asset: assets/fonts/Melodrama/Melodrama-Medium.otf
           weight: 500
-        - asset: assets/fonts/Melodrama/Melodrama-SemiBold.otf
+        - asset: assets/fonts/Melodrama/Melodrama-Semibold.otf
           weight: 600
 
     - family: Britney
@@ -179,5 +179,5 @@ flutter:
           weight: 800
         - asset: assets/fonts/Quilon/Quilon-Medium.otf
           weight: 500
-        - asset: assets/fonts/Quilon/Quilon-SemiBold.otf
+        - asset: assets/fonts/Quilon/Quilon-Semibold.otf
           weight: 600
