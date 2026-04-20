@@ -34,14 +34,11 @@ class Variant {
   // gautammanwani06.vercel.app
   static bool get isFlutterAndroid => current == 'flutter_android';
 
-
   /// Whether the Play Store button should be shown.
   /// Hidden on pure iOS variants.
-  static bool get showPlayStore =>
-      isFlutter || isAndroidNative || isFlutterAndroid || isNative;
+  static bool get showPlayStore => !isIOSNative;
 
   /// Whether the App Store button should be shown.
   /// Hidden on pure Android variants.
-  static bool get showAppStore =>
-      isFlutter || isIOSNative || isFlutterIOS || isNative;
+  static bool get showAppStore => !isAndroidNative;
 }
