@@ -1,14 +1,25 @@
 import 'package:portfolio/core/constants/string_constants.dart';
 
 enum MediaLinkE {
-  medium(title: StringC.medium, url: StringC.mediumUrl),
-  stackOverflow(title: StringC.stackOverflow, url: StringC.stackOverflowUrl),
-  email(title: StringC.email, url: StringC.emailUrl),
-  linkedIn(title: StringC.linkedIn, url: StringC.linkedInUrl),
-  resume(title: StringC.resume, url: StringC.resumeUrl);
+  medium,
+  stackOverflow,
+  email,
+  linkedIn,
+  resume;
 
-  final String title;
-  final String url;
+  String get title => switch (this) {
+        MediaLinkE.medium => StringC.medium,
+        MediaLinkE.stackOverflow => StringC.stackOverflow,
+        MediaLinkE.email => StringC.email,
+        MediaLinkE.linkedIn => StringC.linkedIn,
+        MediaLinkE.resume => StringC.resume,
+      };
 
-  const MediaLinkE({required this.title, required this.url});
+  String get url => switch (this) {
+        MediaLinkE.medium => StringC.mediumUrl,
+        MediaLinkE.stackOverflow => StringC.stackOverflowUrl,
+        MediaLinkE.email => StringC.emailUrl,
+        MediaLinkE.linkedIn => StringC.linkedInUrl,
+        MediaLinkE.resume => StringC.resumeUrl,
+      };
 }

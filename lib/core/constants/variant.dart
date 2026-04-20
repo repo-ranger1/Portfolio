@@ -9,6 +9,7 @@
 ///   flutter build web --release --dart-define=VARIANT=android_native
 ///   flutter build web --release --dart-define=VARIANT=flutter_ios
 ///   flutter build web --release --dart-define=VARIANT=flutter_android
+///   flutter build web --release --dart-define=VARIANT=native
 class Variant {
   Variant._();
 
@@ -29,4 +30,17 @@ class Variant {
 
   // gautammanwani05.vercel.app
   static bool get isFlutterAndroid => current == 'flutter_android';
+
+  // gautammanwani06.vercel.app — Android + iOS native combined
+  static bool get isNative => current == 'native';
+
+  /// Whether the Play Store button should be shown.
+  /// Hidden on pure iOS variants.
+  static bool get showPlayStore =>
+      isFlutter || isAndroidNative || isFlutterAndroid || isNative;
+
+  /// Whether the App Store button should be shown.
+  /// Hidden on pure Android variants.
+  static bool get showAppStore =>
+      isFlutter || isIOSNative || isFlutterIOS || isNative;
 }

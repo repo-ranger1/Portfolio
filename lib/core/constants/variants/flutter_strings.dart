@@ -38,6 +38,9 @@ class FlutterStrings {
     'Performance',
   ];
 
+  static const String resumeUrl =
+      'https://docs.google.com/document/d/1krm-_wcuDGapzvUqhy8eWsbKzKGj_og7gwKaEpkxKxU/edit?usp=drive_link';
+
   /// Projects to show — list of project keys in display order.
   static const List<String> projectKeys = [
     'imsGo',

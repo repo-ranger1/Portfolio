@@ -38,6 +38,9 @@ class IOSNativeStrings {
     'TestFlight',
   ];
 
+  static const String resumeUrl =
+      'https://docs.google.com/document/d/1VZfZHGTiAG5xeF8SEpI-_FrbJP5QO80Fusm0yOOdTqk/edit?usp=sharing';
+
   static const List<String> projectKeys = [
     'imsGo',
     'imsCare',

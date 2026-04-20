@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/core/constants/asset_constants.dart';
 import 'package:portfolio/core/constants/string_constants.dart';
+import 'package:portfolio/core/constants/variant.dart';
 import 'package:portfolio/core/extensions/string_exntesion.dart';
 import 'package:portfolio/core/utils/app/app_color_royal.dart';
 import 'package:portfolio/core/utils/launcher_util.dart';
@@ -206,7 +207,7 @@ class _ProjectCardState extends State<ProjectCard> {
       spacing: context.spacing(16),
       runSpacing: context.spacing(16),
       children: [
-        if (widget.project.playStoreUrl.isNotNullOrEmpty)
+        if (Variant.showPlayStore && widget.project.playStoreUrl.isNotNullOrEmpty)
           _StoreButton(
             icon: AssetC.playStore,
             label: StringC.playStoreLabel,
@@ -214,7 +215,7 @@ class _ProjectCardState extends State<ProjectCard> {
                 link: widget.project.playStoreUrl ?? ''),
             isMobile: isMobile,
           ),
-        if (widget.project.appStoreUrl.isNotNullOrEmpty)
+        if (Variant.showAppStore && widget.project.appStoreUrl.isNotNullOrEmpty)
           _StoreButton(
             icon: AssetC.appStore,
             label: StringC.appStoreLabel,

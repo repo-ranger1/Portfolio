@@ -4,6 +4,7 @@ import 'package:portfolio/core/constants/variants/flutter_android_strings.dart';
 import 'package:portfolio/core/constants/variants/flutter_ios_strings.dart';
 import 'package:portfolio/core/constants/variants/flutter_strings.dart';
 import 'package:portfolio/core/constants/variants/ios_native_strings.dart';
+import 'package:portfolio/core/constants/variants/native_strings.dart';
 
 class StringC {
   StringC._();
@@ -35,6 +36,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.heroEyebrow;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.heroEyebrow;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.heroEyebrow;
+    if (Variant.isNative) return NativeStrings.heroEyebrow;
     return FlutterStrings.heroEyebrow;
   }
 
@@ -43,6 +45,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.heroTitle1;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.heroTitle1;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.heroTitle1;
+    if (Variant.isNative) return NativeStrings.heroTitle1;
     return FlutterStrings.heroTitle1;
   }
 
@@ -51,6 +54,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.heroTitle2;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.heroTitle2;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.heroTitle2;
+    if (Variant.isNative) return NativeStrings.heroTitle2;
     return FlutterStrings.heroTitle2;
   }
 
@@ -59,6 +63,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.heroTagline;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.heroTagline;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.heroTagline;
+    if (Variant.isNative) return NativeStrings.heroTagline;
     return FlutterStrings.heroTagline;
   }
 
@@ -67,6 +72,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.landingSubtitle;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.landingSubtitle;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.landingSubtitle;
+    if (Variant.isNative) return NativeStrings.landingSubtitle;
     return FlutterStrings.landingSubtitle;
   }
 
@@ -153,6 +159,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.aboutTitle;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.aboutTitle;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.aboutTitle;
+    if (Variant.isNative) return NativeStrings.aboutTitle;
     return FlutterStrings.aboutTitle;
   }
 
@@ -163,6 +170,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.aboutP1;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.aboutP1;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.aboutP1;
+    if (Variant.isNative) return NativeStrings.aboutP1;
     return FlutterStrings.aboutP1;
   }
 
@@ -171,6 +179,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.aboutP2;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.aboutP2;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.aboutP2;
+    if (Variant.isNative) return NativeStrings.aboutP2;
     return FlutterStrings.aboutP2;
   }
 
@@ -179,6 +188,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.aboutP3;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.aboutP3;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.aboutP3;
+    if (Variant.isNative) return NativeStrings.aboutP3;
     return FlutterStrings.aboutP3;
   }
 
@@ -187,6 +197,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.aboutP4;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.aboutP4;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.aboutP4;
+    if (Variant.isNative) return NativeStrings.aboutP4;
     return FlutterStrings.aboutP4;
   }
 
@@ -218,8 +229,14 @@ class StringC {
   static const String linkedInUrl =
       'https://www.linkedin.com/in/gautam-manwani-462495230/';
   static const String resume = 'Resume';
-  static const String resumeUrl =
-      'https://docs.google.com/document/d/1krm-_wcuDGapzvUqhy8eWsbKzKGj_og7gwKaEpkxKxU/edit?usp=drive_link';
+  static String get resumeUrl {
+    if (Variant.isIOSNative) return IOSNativeStrings.resumeUrl;
+    if (Variant.isAndroidNative) return AndroidNativeStrings.resumeUrl;
+    if (Variant.isFlutterIOS) return FlutterIOSStrings.resumeUrl;
+    if (Variant.isFlutterAndroid) return FlutterAndroidStrings.resumeUrl;
+    if (Variant.isNative) return NativeStrings.resumeUrl;
+    return FlutterStrings.resumeUrl;
+  }
   static const String stackOverflow = 'Stack Overflow';
   static const String stackOverflowUrl =
       'https://stackoverflow.com/users/21977414/pixel';
@@ -232,6 +249,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.craftedWithPassion;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.craftedWithPassion;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.craftedWithPassion;
+    if (Variant.isNative) return NativeStrings.craftedWithPassion;
     return FlutterStrings.craftedWithPassion;
   }
 
@@ -243,6 +261,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.skills;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.skills;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.skills;
+    if (Variant.isNative) return NativeStrings.skills;
     return FlutterStrings.skills;
   }
 
@@ -254,6 +273,7 @@ class StringC {
     if (Variant.isAndroidNative) return AndroidNativeStrings.projectKeys;
     if (Variant.isFlutterIOS) return FlutterIOSStrings.projectKeys;
     if (Variant.isFlutterAndroid) return FlutterAndroidStrings.projectKeys;
+    if (Variant.isNative) return NativeStrings.projectKeys;
     return FlutterStrings.projectKeys;
   }
 

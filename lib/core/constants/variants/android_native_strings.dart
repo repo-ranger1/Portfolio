@@ -38,6 +38,9 @@ class AndroidNativeStrings {
     'Google Play',
   ];
 
+  static const String resumeUrl =
+      'https://docs.google.com/document/d/1GmXHlHxYc1kUHZA1N5vCqNjfNDEP42olUEfPDtQtXZA/edit?usp=sharing';
+
   static const List<String> projectKeys = [
     'imsGo',
     'imsCare',

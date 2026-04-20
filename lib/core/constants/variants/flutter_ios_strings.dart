@@ -39,6 +39,9 @@ class FlutterIOSStrings {
     'TestFlight',
   ];
 
+  static const String resumeUrl =
+      'https://docs.google.com/document/d/1zLELT5SEdP1mxT2FowIFGk3pY-3LcQhAyX0vXrG5_Pc/edit?usp=sharing';
+
   static const List<String> projectKeys = [
     'imsGo',
     'imsCare',
