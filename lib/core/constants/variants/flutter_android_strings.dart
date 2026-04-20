@@ -1,42 +1,42 @@
 /// Variant: flutter_android
-/// Target audience: Recruiters/clients looking for a Flutter developer
-/// with deep Android specialisation — Play Store, Material, platform channels.
+/// Target audience: Recruiters/clients looking for someone who does
+/// both Flutter AND Android native — two skill sets, one developer.
 class FlutterAndroidStrings {
   FlutterAndroidStrings._();
 
-  static const String heroEyebrow = 'Flutter Developer · Android Specialist';
-  static const String heroTitle1 = 'Flutter apps,';
-  static const String heroTitle2 = 'perfected for Android.';
+  static const String heroEyebrow = 'Flutter & Android Engineer';
+  static const String heroTitle1 = 'Flutter and Android.';
+  static const String heroTitle2 = 'Both, not either.';
   static const String heroTagline =
-      "Cross-platform shouldn't mean generic. I build Flutter apps that feel at home on Android — Material You, adaptive layouts, and deep platform integration.";
+      "I don't pick one — I bring Flutter and Android native to every conversation. The right tool for the right problem, with the depth to back it up.";
   static const String landingSubtitle =
-      'Flutter Developer · Android Focus\nshipping polished Play Store experiences.';
+      'Flutter & Android Native Developer\ndelivering across both ecosystems.';
 
   static const String aboutTitle =
-      'Flutter on Android.\nFull power, no limits.';
+      'Flutter and Kotlin.\nTwo crafts, one engineer.';
   static const String aboutP1 =
-      "I build Flutter applications with an Android-first mindset. Material You design, adaptive layouts for phones and foldables, and a deep respect for the design language that Android users live in every day. Cross-platform doesn't mean one-size-fits-all — I build for the platform.";
+      "I work in Flutter and Android native — and I go deep on both. Flutter for its composability, performance, and cross-platform reach. Kotlin and Jetpack Compose for when the Android platform needs to be engaged directly, without abstraction in the way.";
   static const String aboutP2 =
-      "Flutter is my framework, but Kotlin and the Android SDK are familiar ground. When the framework boundary needs to be crossed — native plugins, platform channels, ProGuard rules, Gradle configurations — I cross it without hesitation.";
+      "On the Flutter side: Clean Architecture, BLoC, custom animations, and apps that have shipped to millions on the Play Store. On the Android side: Kotlin, Jetpack Compose, Hilt, Room, Coroutines, and the full suite of Jetpack libraries — building apps that feel like Android, because they are.";
   static const String aboutP3 =
-      "From Clean Architecture and BLoC to complex animations and offline-first data strategies, I build Flutter apps that are as robust under the hood as they are polished on screen. Google Play compliance, App Bundles, and performance profiling are standard practice.";
+      "The most interesting problems sit at the intersection. A Flutter app that needs a native Android SDK integrated cleanly. A project where business logic lives in Dart but the UI needs to speak Material You fluently. I've been on both sides of that boundary — I know how to bridge it.";
   static const String aboutP4 =
-      "When I'm not shipping, I'm tracking both Flutter releases and Android platform updates — because the best Flutter Android developer is one who never stops learning either side of the equation.";
+      "When I'm not building, I'm tracking Flutter releases and Android platform updates in parallel — because informed decisions on two ecosystems are only possible when you're genuinely current on both.";
 
   static const String craftedWithPassion =
-      'Crafted with Flutter. Perfected for Android.';
+      'Built with Flutter & Kotlin. At home on both platforms.';
 
   static const List<String> skills = [
-    'Flutter',
-    'Dart',
-    'Android / Kotlin',
-    'Material You',
-    'Platform Channels',
-    'Google Play Console',
+    'Flutter & Dart',
+    'Kotlin & Jetpack Compose',
+    'Android SDK',
     'Clean Architecture',
     'BLoC',
+    'Hilt / Coroutines',
+    'App Store & Play Store',
     'Firebase',
-    'Gradle / App Bundle',
+    'REST APIs',
+    'Android Studio & Xcode',
   ];
 
   static const String resumeUrl =

@@ -25,14 +25,15 @@ class Variant {
   // gautammanwani03.vercel.app
   static bool get isAndroidNative => current == 'android_native';
 
-  // gautammanwani04.vercel.app
-  static bool get isFlutterIOS => current == 'flutter_ios';
+  // gautammanwani04.vercel.app — Android + iOS native combined
+  static bool get isNative => current == 'native';
 
   // gautammanwani05.vercel.app
+  static bool get isFlutterIOS => current == 'flutter_ios';
+
+  // gautammanwani06.vercel.app
   static bool get isFlutterAndroid => current == 'flutter_android';
 
-  // gautammanwani06.vercel.app — Android + iOS native combined
-  static bool get isNative => current == 'native';
 
   /// Whether the Play Store button should be shown.
   /// Hidden on pure iOS variants.

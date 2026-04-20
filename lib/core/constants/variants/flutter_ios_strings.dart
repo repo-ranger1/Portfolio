@@ -1,42 +1,42 @@
 /// Variant: flutter_ios
-/// Target audience: Recruiters/clients looking for a Flutter developer
-/// with deep iOS specialisation — App Store, Cupertino, platform channels.
+/// Target audience: Recruiters/clients looking for someone who does
+/// both Flutter AND iOS native — two skill sets, one developer.
 class FlutterIOSStrings {
   FlutterIOSStrings._();
 
-  static const String heroEyebrow = 'Flutter Developer · iOS Specialist';
-  static const String heroTitle1 = 'Flutter apps,';
-  static const String heroTitle2 = 'perfected for iOS.';
+  static const String heroEyebrow = 'Flutter & iOS Engineer';
+  static const String heroTitle1 = 'Flutter and iOS.';
+  static const String heroTitle2 = 'Both, not either.';
   static const String heroTagline =
-      "Cross-platform doesn't mean compromise. I build Flutter apps that feel native on iOS — because I understand the platform beneath the framework.";
+      "I don't choose between Flutter and iOS — I bring both to the table. Cross-platform velocity when it fits, native depth when it matters.";
   static const String landingSubtitle =
-      'Flutter Developer · iOS Focus\nshipping polished App Store experiences.';
+      'Flutter & iOS Native Developer\ndelivering across both ecosystems.';
 
   static const String aboutTitle =
-      'Flutter on iOS.\nNo compromises.';
+      'Flutter and Swift.\nTwo crafts, one engineer.';
   static const String aboutP1 =
-      "I build Flutter applications with an iOS-first mindset. That means Cupertino widgets where they belong, platform channels when Flutter doesn't go deep enough, and a relentless focus on App Store compliance, performance, and the design language iOS users expect.";
+      "I work in Flutter and iOS native — not as a generalist who dabbles, but as a developer who has gone deep on both. Flutter for its speed, composability, and cross-platform reach. Swift and SwiftUI for the moments where native depth is the only right answer. I know which tool fits which job.";
   static const String aboutP2 =
-      "Flutter is my framework of choice, but I never forget the platform underneath. I work comfortably with Swift and Xcode to build native plugins, debug platform-specific issues, and integrate iOS-exclusive capabilities like Sign in with Apple, HealthKit, and Core NFC.";
+      "On the Flutter side: Clean Architecture, BLoC, custom animations, and production-grade apps that have shipped to both the App Store and Play Store. On the iOS side: Swift, SwiftUI, UIKit, Core Animation, and the full Apple SDK — building experiences that feel unmistakably native.";
   static const String aboutP3 =
-      "Clean Architecture, BLoC, and disciplined state management ensure my Flutter apps are as maintainable as they are beautiful. Whether it's complex animations, offline-first architectures, or deeply integrated iOS features, I deliver without cutting corners.";
+      "The best projects often need both. A Flutter app that integrates a native iOS SDK. A codebase that shares business logic in Dart while the UI speaks the language of the platform. I bridge that gap because I live on both sides of it.";
   static const String aboutP4 =
-      "When I'm not building, I'm studying both the Flutter changelog and Apple's platform updates — because the best Flutter iOS developer is one who masters both worlds equally. That's the standard I hold myself to.";
+      "When I'm not building, I'm tracking both the Flutter changelog and Apple's platform releases — because staying sharp on two ecosystems means the decisions I make are always informed, never guesswork.";
 
   static const String craftedWithPassion =
-      'Crafted with Flutter. Perfected for iOS.';
+      'Built with Flutter & Swift. At home on both platforms.';
 
   static const List<String> skills = [
-    'Flutter',
-    'Dart',
-    'iOS / Xcode',
-    'Swift (Platform Channels)',
-    'Cupertino Design',
-    'App Store Connect',
+    'Flutter & Dart',
+    'Swift & SwiftUI',
+    'UIKit',
     'Clean Architecture',
     'BLoC',
+    'Core Animation',
+    'App Store & Play Store',
     'Firebase',
-    'TestFlight',
+    'REST APIs',
+    'Xcode & Android Studio',
   ];
 
   static const String resumeUrl =
